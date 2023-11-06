@@ -3,6 +3,5 @@
 
 int main(void)
 {
-
     printf("vamo pa la plaia!");
 }
