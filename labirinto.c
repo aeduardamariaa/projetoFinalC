@@ -31,6 +31,8 @@ int matriz[LINHA][COLUNA] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
 
 void mostrarLabirinto(int matriz[LINHA][COLUNA], Personagem bolinha)
 {
+    int lab = 176;
+    int quadrado = 219;
 
     for (int i = 0; i < LINHA; i++)
     {
@@ -42,7 +44,7 @@ void mostrarLabirinto(int matriz[LINHA][COLUNA], Personagem bolinha)
             }
             else if (matriz[i][j] == 1)
             {
-                printf("[]");
+                printf("%c%c", lab, lab);
             }
             else if (matriz[i][j] == 0)
             {
@@ -54,7 +56,7 @@ void mostrarLabirinto(int matriz[LINHA][COLUNA], Personagem bolinha)
             }
             else if (matriz[i][j] == 3)
             {
-                printf("  ");
+                printf("%c%c", quadrado, quadrado);
             }
         }
         printf("\n");
