@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <conio.h>
+
 #define LINHA 17
 #define COLUNA 17
 
@@ -7,29 +9,25 @@ typedef struct
 {
     int x;
     int y;
-}Personagem;
-
+} Personagem;
 
 int matriz[LINHA][COLUNA] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                            {1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                            {1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                            {1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 3},
-                            {1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1},
-                            {1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1},
-                            {1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1},
-                            {1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1},
-                            {1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1},
-                            {1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1},
-                            {1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1},
-                            {1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1},
-                            {1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1},
-                            {2, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1},
-                            {1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1},
-                            {1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
-
-
-
+                             {1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                             {1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+                             {1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 3},
+                             {1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1},
+                             {1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1},
+                             {1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1},
+                             {1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1},
+                             {1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1},
+                             {1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1},
+                             {1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1},
+                             {1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1},
+                             {1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1},
+                             {2, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1},
+                             {1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1},
+                             {1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
 
 void mostrarLabirinto(int matriz[LINHA][COLUNA], Personagem bolinha)
 {
@@ -38,15 +36,18 @@ void mostrarLabirinto(int matriz[LINHA][COLUNA], Personagem bolinha)
     {
         for (int j = 0; j < COLUNA; j++)
         {
-            if (i == bolinha.y && j == bolinha.x)
+            if (j == bolinha.y && i == bolinha.x)
             {
-                printf("@ ");
+                printf("**");
             }
             else if (matriz[i][j] == 1)
             {
                 printf("[]");
-            }else if (matriz[i][j] == 0)
+            }
+            else if (matriz[i][j] == 0)
             {
+                printf("  ");
+            }else if(matriz[i][j] == 2){
                 printf("  ");
             }
         }
@@ -54,71 +55,67 @@ void mostrarLabirinto(int matriz[LINHA][COLUNA], Personagem bolinha)
     }
 }
 
-char inputUsuario()
+
+// void verificarParedes(int matriz[LINHA][COLUNA], Personagem bolinha, char input)
+// {
+//     for (int i = 0; i < LINHA; i++)
+//     {
+//         for (int i = 0; i < COLUNA; i++)
+//         {
+//             if ()
+//             {
+//                 /* code */
+//             }
+
+//         }
+
+//     }
+//     return 1;
+// }
+void andar(int matriz[LINHA][COLUNA], Personagem * bolinha)
 {
-    char direcao;
+    while(1){
+        mostrarLabirinto(matriz, *bolinha);
 
-    scanf(" %c", &direcao);
+        int input; 
 
-    return direcao;
-}
+        input = getch();
 
-void verificarParedes(int matriz[LINHA][COLUNA], Personagem bolinha, char input)
-{
-    for (int i = 0; i < LINHA; i++)
-    {
-        for (int i = 0; i < COLUNA; i++)
+        if (kbhit() == 0)
         {
-            if ()
+            // W
+            if (input == 87 || input == 119)
             {
-                /* code */
+                bolinha->x = bolinha->x - 1;
             }
-            
+            else if (input == 68 || input == 100) //D
+            {
+                bolinha->y = bolinha->y + 1;
+            }
+            else if (input == 83 || input == 115)//S
+            {
+                bolinha->x = bolinha->x + 1;
+            }
+            else if (input == 65 || input == 97) //A
+            {
+                bolinha->y = bolinha->y - 1;
+            }
+            system("cls");  
         }
-        
-    }
-    return 1;
-}
-void andar(int matriz[LINHA][COLUNA], Personagem bolinha){
-    char input = inputUsuario();
-
-    switch (input)
-    {
-        case 'w':
-        case 'W':
-            /* code for 'w' or 'W' */
-            break;
-        case 'a':
-        case 'A':
-            /* code for 'a' or 'A' */
-            break;
-        case 's':
-        case 'S':
-            /* code for 's' or 'S' */
-            break;
-        case 'd':
-        case 'D':
-            /* code for 'd' or 'D' */
-            break;
-        default:
-            printf("Comando inválido!");
-            break;
     }
 }
 
 int main(void)
-{   
+{
     Personagem bolinha;
-    bolinha.x=0;
-    bolinha.y=13;
-    
+    bolinha.x = 13;
+    bolinha.y = 0;
+
     while (1)
     {
-        mostrarLabirinto(matriz, x,y);
-        printf("%c", inputUsuario());
+        // mostrarLabirinto(matriz, bolinha);
+        andar(matriz, &bolinha);
+        // printf("%d", inputUsuario());
         break;
-
     }
-
-
 }
