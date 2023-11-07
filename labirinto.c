@@ -70,10 +70,7 @@ int verificarParedes(int matriz[LINHA][COLUNA], Personagem bolinha, int input)
         {
             return 1;
         }
-        else if (matriz[bolinha.x -1][bolinha.y] == 3)
-        {
-            return 3;
-        }
+
     }
     else if (input == 68 || input == 100) // D
     {
@@ -81,10 +78,7 @@ int verificarParedes(int matriz[LINHA][COLUNA], Personagem bolinha, int input)
         {
             return 1;
         }
-        else if (matriz[bolinha.x ][bolinha.y+1] == 3)
-        {
-            return 3;
-        }
+
     }
     else if (input == 83 || input == 115) // S
     {
@@ -92,10 +86,7 @@ int verificarParedes(int matriz[LINHA][COLUNA], Personagem bolinha, int input)
         {
             return 1;
         }
-        else if (matriz[bolinha.x +1][bolinha.y] == 3)
-        {
-            return 3;
-        }
+
     }
     else if (input == 65 || input == 97) // A
     {
@@ -103,15 +94,31 @@ int verificarParedes(int matriz[LINHA][COLUNA], Personagem bolinha, int input)
         {
             return 1;
         }
-        else if (matriz[bolinha.x ][bolinha.y -1] == 3)
-        {
-            return 3;
-        }
     }
     else{
         return 0;
     }
   
+}
+
+int ganhar(int matriz[LINHA][COLUNA], Personagem bolinha)
+{
+    if (matriz[bolinha.x -1][bolinha.y] == 3)
+    {
+        return 3;
+    }
+    else if (matriz[bolinha.x ][bolinha.y+1] == 3)
+    {
+        return 3;
+    }
+    else if (matriz[bolinha.x +1][bolinha.y] == 3)
+    {
+        return 3;
+    }
+    else if (matriz[bolinha.x ][bolinha.y -1] == 3)
+    {
+        return 3;
+    }
 }
 
 int andar(int matriz[LINHA][COLUNA], Personagem *bolinha)
@@ -143,8 +150,8 @@ int andar(int matriz[LINHA][COLUNA], Personagem *bolinha)
             {
                 bolinha->y = bolinha->y - 1;
             }
-            else if(verificarParedes(matriz, *bolinha, input) == 3){
-                printf("Ganhou!");
+            else if(ganhar(matriz, *bolinha) == 3){ // O TEMPOOOOOOOOOOOOOOOO VAI RESOLVER O BREAKKKK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                // printf("Ganhou!");
                 break;
             }
             else //if (verificarParedes(matriz, *bolinha, input) == 1)
@@ -158,14 +165,14 @@ int andar(int matriz[LINHA][COLUNA], Personagem *bolinha)
 }
 
 
-int ganhar(int matrriz[LINHA][COLUNA], Personagem bolinha)
-{
-    if (bolinha.x == 3 && bolinha.y == 16)
-    {
-        return 3;
-    }
+// int ganhar(int matrriz[LINHA][COLUNA], Personagem bolinha)
+// {
+//     if (bolinha.x == 3 && bolinha.y == 16)
+//     {
+//         return 3;
+//     }
     
-}
+// }
 
 int main(void)
 {
@@ -173,6 +180,18 @@ int main(void)
     bolinha.x = 13;
     bolinha.y = 0;
 
-    andar(matriz, &bolinha);
+    while (1)
+    {
+        if (ganhar(matriz, bolinha) == 3)
+        {
+            printf("Ganhouuuuuuuuuuuuu!");
+            break;
+        }else
+        {
+            andar(matriz, &bolinha);
+        }
+            
+    }
+
 
 }
