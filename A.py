@@ -41,8 +41,8 @@ def surroundingCells(rand_wall):
 wall = 1
 cell = 0
 unvisited = 'u'
-height = 40
-width = 40
+height = 50
+width = 50
 maze = []
 
 # Initialize colorama
