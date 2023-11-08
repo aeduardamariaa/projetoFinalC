@@ -308,48 +308,32 @@ int ganhar(int matriz[LINHA][COLUNA], Personagem bolinha)
     }
 }
 
-int andar(int matriz[LINHA][COLUNA], Personagem *bolinha)
+void andar(int matriz[LINHA][COLUNA], Personagem *bolinha, int input)
 {
-    while (1)
+    // W
+    if (input == 87 || input == 119 && verificarParedes(matriz, *bolinha, input) == 0)
     {
-        mostrarLabirinto(matriz, *bolinha);
-
-        int input;
-
-        input = getch();
-
-        if (kbhit() == 0)
-        {
-            // W
-            if (input == 87 || input == 119 && verificarParedes(matriz, *bolinha, input) == 0)
-            {
-                bolinha->x = bolinha->x - 1;
-            }
-            else if (input == 68 || input == 100 && verificarParedes(matriz, *bolinha, input) == 0) // D
-            {
-                bolinha->y = bolinha->y + 1;
-            }
-            else if (input == 83 || input == 115 && verificarParedes(matriz, *bolinha, input) == 0) // S
-            {
-                bolinha->x = bolinha->x + 1;
-            }
-            else if (input == 65 || input == 97 && verificarParedes(matriz, *bolinha, input) == 0) // A
-            {
-                bolinha->y = bolinha->y - 1;
-            }
-            else if(ganhar(matriz, *bolinha) == 3){ // O TEMPOOOOOOOOOOOOOOOO VAI RESOLVER O BREAKKKK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                // printf("Ganhou!");
-                break;
-            }
-            else //if (verificarParedes(matriz, *bolinha, input) == 1)
-            {
-                bolinha->x = 0;
-                bolinha->y = 1;
-            }
-            system("cls");
-        }
+        bolinha->x = bolinha->x - 1;
+    }
+    else if (input == 68 || input == 100 && verificarParedes(matriz, *bolinha, input) == 0) // D
+    {
+        bolinha->y = bolinha->y + 1;
+    }
+    else if (input == 83 || input == 115 && verificarParedes(matriz, *bolinha, input) == 0) // S
+    {
+        bolinha->x = bolinha->x + 1;
+    }
+    else if (input == 65 || input == 97 && verificarParedes(matriz, *bolinha, input) == 0) // A
+    {
+        bolinha->y = bolinha->y - 1;
+    }
+    else
+    {
+        bolinha->x = 0;
+        bolinha->y = 1;
     }
 }
+
 
 
 // int ganhar(int matrriz[LINHA][COLUNA], Personagem bolinha)
@@ -369,15 +353,27 @@ int main(void)
 
     while (1)
     {
+
+        mostrarLabirinto(matriz, bolinha);
+
+        int input;
+
+        input = getch();
+
+
+        if (kbhit() == 0)
+        {
+
         if (ganhar(matriz, bolinha) == 3)
         {
             printf("Ganhouuuuuuuuuuuuu!");
             break;
         }else
         {
-            andar(matriz, &bolinha);
+            andar(matriz, &bolinha, input);
         }
-            
+        system("cls");
+        }
     }
 
 
