@@ -1,8 +1,8 @@
-#ifndef MEDIO_H
-#define MEDIO_H
+#ifndef TABULEIRO_H
+#define TABULEIRO_H
 
-#define LINHA2 17
-#define COLUNA2 17
+int LINHA2;
+int COLUNA2;
 
 typedef struct
 {

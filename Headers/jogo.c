@@ -1,13 +1,14 @@
+
+#include "../Headers/jogo.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
 
-#include "../Headers/medio.h"
+int LINHA = 17;
+int COLUNA = 17;
 
-#define LINHA2 17
-#define COLUNA2 17
-
-int matriz2[LINHA2][COLUNA2] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+int matriz[17][17] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                                 {1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                                 {1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                                 {1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 3},
@@ -25,32 +26,33 @@ int matriz2[LINHA2][COLUNA2] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
                                 {1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
 
-void mostrarLabirinto2(int matriz2[LINHA2][COLUNA2], Personagem bolinha)
+
+void mostrarLabirinto(int matriz[LINHA][COLUNA], Personagem bolinha)
 {
     int lab = 176;
     int quadrado = 219;
 
-    for (int i = 0; i < LINHA2; i++)
+    for (int i = 0; i < LINHA; i++)
     {
-        for (int j = 0; j < COLUNA2; j++)
+        for (int j = 0; j < COLUNA; j++)
         {
             if (j == bolinha.y && i == bolinha.x)
             {
                 printf("**");
             }
-            else if (matriz2[i][j] == 1)
+            else if (matriz[i][j] == 1)
             {
                 printf("%c%c", lab, lab);
             }
-            else if (matriz2[i][j] == 0)
+            else if (matriz[i][j] == 0)
             {
                 printf("  ");
             }
-            else if (matriz2[i][j] == 2)
+            else if (matriz[i][j] == 2)
             {
                 printf("  ");
             }
-            else if (matriz2[i][j] == 3)
+            else if (matriz[i][j] == 3)
             {
                 printf("%c%c", quadrado, quadrado);
             }
@@ -59,35 +61,35 @@ void mostrarLabirinto2(int matriz2[LINHA2][COLUNA2], Personagem bolinha)
     }
 }
 
-int verificarParedes2(int matriz2[LINHA2][COLUNA2], Personagem bolinha, int input2)
+int verificarParedes(int matriz[LINHA][COLUNA], Personagem bolinha, int input)
 {
-    if (input2 == 87 || input2 == 119) //W
+    if (input == 87 || input == 119) //W
     {
-        if (matriz2[bolinha.x -1][bolinha.y] == 1)
+        if (matriz[bolinha.x -1][bolinha.y] == 1)
         {
             return 1;
         }
 
     }
-    else if (input2 == 68 || input2 == 100) // D
+    else if (input == 68 || input == 100) // D
     {
-        if (matriz2[bolinha.x][bolinha.y + 1] == 1)
+        if (matriz[bolinha.x][bolinha.y + 1] == 1)
         {
             return 1;
         }
 
     }
-    else if (input2 == 83 || input2 == 115) // S
+    else if (input == 83 || input == 115) // S
     {
-        if (matriz2[bolinha.x + 1][bolinha.y] == 1)
+        if (matriz[bolinha.x + 1][bolinha.y] == 1)
         {
             return 1;
         }
 
     }
-    else if (input2 == 65 || input2 == 97) // A
+    else if (input == 65 || input == 97) // A
     {
-        if (matriz2[bolinha.x][bolinha.y - 1] == 1)
+        if (matriz[bolinha.x][bolinha.y - 1] == 1)
         {
             return 1;
         }
@@ -97,47 +99,47 @@ int verificarParedes2(int matriz2[LINHA2][COLUNA2], Personagem bolinha, int inpu
     }
 }
 
-int ganhar2(int matriz2[LINHA2][COLUNA2], Personagem bolinha)
+int ganhar(int matriz[LINHA][COLUNA], Personagem bolinha)
 {
-    if (matriz2[bolinha.x -1][bolinha.y] == 3)
+    if (matriz[bolinha.x -1][bolinha.y] == 3)
     {
         return 3;
     }
-    else if (matriz2[bolinha.x ][bolinha.y+1] == 3)
+    else if (matriz[bolinha.x ][bolinha.y+1] == 3)
     {
         return 3;
     }
-    else if (matriz2[bolinha.x +1][bolinha.y] == 3)
+    else if (matriz[bolinha.x +1][bolinha.y] == 3)
     {
         return 3;
     }
-    else if (matriz2[bolinha.x ][bolinha.y -1] == 3)
+    else if (matriz[bolinha.x ][bolinha.y -1] == 3)
     {
         return 3;
     }
 }
 
-void andar2(int matriz2[LINHA2][COLUNA2], Personagem *bolinha, int input2)
+void andar(int matriz[LINHA][COLUNA], Personagem *bolinha, int input)
 {
-    if ((input2 == 87 || input2 == 119) && (verificarParedes2(matriz2, *bolinha, input2) == 0))//W
+    if ((input == 87 || input == 119) && (verificarParedes(matriz, *bolinha, input) == 0))//W
     {
         bolinha->x = bolinha->x - 1;
     }
-    else if ((input2 == 68 || input2 == 100) && (verificarParedes2(matriz2, *bolinha, input2) == 0)) // D
+    else if ((input == 68 || input == 100) && (verificarParedes(matriz, *bolinha, input) == 0)) // D
     {
         bolinha->y = bolinha->y + 1;
     }
-    else if ((input2 == 83 || input2 == 115) && (verificarParedes2(matriz2, *bolinha, input2) == 0)) // S
+    else if ((input == 83 || input == 115) && (verificarParedes(matriz, *bolinha, input) == 0)) // S
     {
         bolinha->x = bolinha->x + 1;
     }
-    else if ((input2 == 65 || input2 == 97) && (verificarParedes2(matriz2, *bolinha, input2) == 0)) // A
+    else if ((input == 65 || input == 97) && (verificarParedes(matriz, *bolinha, input) == 0)) // A
     {
         bolinha->y = bolinha->y - 1;
     }
     else
     {
-        bolinha->x = 0;
-        bolinha->y = 1;
+        bolinha->x = 13;
+        bolinha->y = 0;
     }
 }
