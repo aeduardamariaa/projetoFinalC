@@ -5,6 +5,11 @@
 #include "../Headers/dificil.h"
 #include "../Headers/dificil.c"
 
+
+
+// #include "../Headers/dificil.h"
+// #include "../Headers/dificil.c"
+
 int main(void)
 {
     Personagem bolinha;
@@ -13,7 +18,6 @@ int main(void)
 
     while (1)
     {
-
         mostrarLabirinto3(matriz3, bolinha);
 
         int input;
