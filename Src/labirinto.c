@@ -334,17 +334,6 @@ void andar(int matriz[LINHA][COLUNA], Personagem *bolinha, int input)
     }
 }
 
-
-
-// int ganhar(int matrriz[LINHA][COLUNA], Personagem bolinha)
-// {
-//     if (bolinha.x == 3 && bolinha.y == 16)
-//     {
-//         return 3;
-//     }
-    
-// }
-
 int main(void)
 {
     Personagem bolinha;
@@ -375,6 +364,4 @@ int main(void)
         system("cls");
         }
     }
-
-
 }
