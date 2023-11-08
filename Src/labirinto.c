@@ -357,7 +357,8 @@ int main(void)
         {
             printf("Ganhouuuuuuuuuuuuu!");
             break;
-        }else
+        }
+        else
         {
             andar(matriz, &bolinha, input);
         }
