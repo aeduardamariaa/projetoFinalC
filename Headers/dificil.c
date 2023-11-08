@@ -4,10 +4,10 @@
 
 #include "../Headers/dificil.h"
 
-#define LINHA 50
-#define COLUNA 50
+#define LINHA3 50
+#define COLUNA3 50
 
-int matriz[LINHA][COLUNA] = {
+int matriz3[LINHA3][COLUNA3] = {
 {
 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },
 
@@ -210,32 +210,32 @@ int matriz[LINHA][COLUNA] = {
 
 };
 
-void mostrarLabirinto(int matriz[LINHA][COLUNA], Personagem bolinha)
+void mostrarLabirinto3(int matriz3[LINHA3][COLUNA3], Personagem bolinha)
 {
     int lab = 176;
     int quadrado = 219;
 
-    for (int i = 0; i < LINHA; i++)
+    for (int i = 0; i < LINHA3; i++)
     {
-        for (int j = 0; j < COLUNA; j++)
+        for (int j = 0; j < COLUNA3; j++)
         {
             if (j == bolinha.y && i == bolinha.x)
             {
                 printf("**");
             }
-            else if (matriz[i][j] == 1)
+            else if (matriz3[i][j] == 1)
             {
                 printf("%c%c", lab, lab);
             }
-            else if (matriz[i][j] == 0)
+            else if (matriz3[i][j] == 0)
             {
                 printf("  ");
             }
-            else if (matriz[i][j] == 2)
+            else if (matriz3[i][j] == 2)
             {
                 printf("  ");
             }
-            else if (matriz[i][j] == 3)
+            else if (matriz3[i][j] == 3)
             {
                 printf("%c%c", quadrado, quadrado);
             }
@@ -244,35 +244,35 @@ void mostrarLabirinto(int matriz[LINHA][COLUNA], Personagem bolinha)
     }
 }
 
-int verificarParedes(int matriz[LINHA][COLUNA], Personagem bolinha, int input)
+int verificarParedes3(int matriz3[LINHA3][COLUNA3], Personagem bolinha, int input3)
 {
-    if (input == 87 || input == 119) //W
+    if (input3 == 87 || input3 == 119) //W
     {
-        if (matriz[bolinha.x -1][bolinha.y] == 1)
+        if (matriz3[bolinha.x -1][bolinha.y] == 1)
         {
             return 1;
         }
 
     }
-    else if (input == 68 || input == 100) // D
+    else if (input3 == 68 || input3 == 100) // D
     {
-        if (matriz[bolinha.x][bolinha.y + 1] == 1)
+        if (matriz3[bolinha.x][bolinha.y + 1] == 1)
         {
             return 1;
         }
 
     }
-    else if (input == 83 || input == 115) // S
+    else if (input3 == 83 || input3 == 115) // S
     {
-        if (matriz[bolinha.x + 1][bolinha.y] == 1)
+        if (matriz3[bolinha.x + 1][bolinha.y] == 1)
         {
             return 1;
         }
 
     }
-    else if (input == 65 || input == 97) // A
+    else if (input3 == 65 || input3 == 97) // A
     {
-        if (matriz[bolinha.x][bolinha.y - 1] == 1)
+        if (matriz3[bolinha.x][bolinha.y - 1] == 1)
         {
             return 1;
         }
@@ -282,42 +282,41 @@ int verificarParedes(int matriz[LINHA][COLUNA], Personagem bolinha, int input)
     }
 }
 
-int ganhar(int matriz[LINHA][COLUNA], Personagem bolinha)
+int ganhar3(int matriz3[LINHA3][COLUNA3], Personagem bolinha)
 {
-    if (matriz[bolinha.x -1][bolinha.y] == 3)
+    if (matriz3[bolinha.x -1][bolinha.y] == 3)
     {
         return 3;
     }
-    else if (matriz[bolinha.x ][bolinha.y+1] == 3)
+    else if (matriz3[bolinha.x ][bolinha.y+1] == 3)
     {
         return 3;
     }
-    else if (matriz[bolinha.x +1][bolinha.y] == 3)
+    else if (matriz3[bolinha.x +1][bolinha.y] == 3)
     {
         return 3;
     }
-    else if (matriz[bolinha.x ][bolinha.y -1] == 3)
+    else if (matriz3[bolinha.x ][bolinha.y -1] == 3)
     {
         return 3;
     }
 }
 
-void andar(int matriz[LINHA][COLUNA], Personagem *bolinha, int input)
+void andar3(int matriz3[LINHA3][COLUNA3], Personagem *bolinha, int input3)
 {
-    // W
-    if ((input == 87 || input == 119) && (verificarParedes(matriz, *bolinha, input) == 0))
+    if ((input3 == 87 || input3 == 119) && (verificarParedes3(matriz3, *bolinha, input3) == 0))//W
     {
         bolinha->x = bolinha->x - 1;
     }
-    else if ((input == 68 || input == 100) && (verificarParedes(matriz, *bolinha, input) == 0)) // D
+    else if ((input3 == 68 || input3 == 100) && (verificarParedes3(matriz3, *bolinha, input3) == 0)) // D
     {
         bolinha->y = bolinha->y + 1;
     }
-    else if ((input == 83 || input == 115) && (verificarParedes(matriz, *bolinha, input) == 0)) // S
+    else if ((input3 == 83 || input3 == 115) && (verificarParedes3(matriz3, *bolinha, input3) == 0)) // S
     {
         bolinha->x = bolinha->x + 1;
     }
-    else if ((input == 65 || input == 97) && (verificarParedes(matriz, *bolinha, input) == 0)) // A
+    else if ((input3 == 65 || input3 == 97) && (verificarParedes3(matriz3, *bolinha, input3) == 0)) // A
     {
         bolinha->y = bolinha->y - 1;
     }

@@ -14,7 +14,7 @@ int main(void)
     while (1)
     {
 
-        mostrarLabirinto(matriz, bolinha);
+        mostrarLabirinto3(matriz3, bolinha);
 
         int input;
 
@@ -24,16 +24,17 @@ int main(void)
         if (kbhit() == 0)
         {
 
-        if (ganhar(matriz, bolinha) == 3)
+        if (ganhar3(matriz3, bolinha) == 3)
         {
             printf("Ganhouuuuuuuuuuuuu!");
             break;
         }
         else
         {
-            andar(matriz, &bolinha, input);
+            andar3(matriz3, &bolinha, input);
         }
         system("cls");
-        }
+        
     }
+}
 }

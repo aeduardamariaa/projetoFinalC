@@ -1,8 +1,8 @@
 #ifndef DIFICIL_H
 #define DIFICIL_H
 
-#define LINHA 50
-#define COLUNA 50
+#define LINHA3 50
+#define COLUNA3 50
 
 typedef struct
 {
@@ -10,12 +10,12 @@ typedef struct
     int y;
 } Personagem;
 
-void mostrarLabirinto(int matriz[LINHA][COLUNA], Personagem bolinha);
+void mostrarLabirinto3(int matriz3[LINHA3][COLUNA3], Personagem bolinha);
 
-int verificarParedes(int matriz[LINHA][COLUNA], Personagem bolinha, int input);
+int verificarParedes3(int matriz3[LINHA3][COLUNA3], Personagem bolinha, int input3);
 
-int ganhar(int matriz[LINHA][COLUNA], Personagem bolinha);
+int ganhar3(int matriz3[LINHA3][COLUNA3], Personagem bolinha);
 
-void andar(int matriz[LINHA][COLUNA], Personagem *bolinha, int input);
+void andar3(int matriz3[LINHA3][COLUNA3], Personagem *bolinha, int input3);
 
 #endif
