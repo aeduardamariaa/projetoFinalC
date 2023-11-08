@@ -4,6 +4,8 @@
 
 #include "../Headers/dificil.h"
 #include "../Headers/dificil.c"
+// #include "../Headers/facil.h"
+// #include "../Headers/facil.c"
 
 int main(void)
 {
