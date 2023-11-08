@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <conio.h>
 
-#include "Headers/dificil.h"
+#include "../Headers/dificil.h"
 
 #define LINHA 50
 #define COLUNA 50
@@ -246,7 +246,6 @@ void mostrarLabirinto(int matriz[LINHA][COLUNA], Personagem bolinha)
 
 int verificarParedes(int matriz[LINHA][COLUNA], Personagem bolinha, int input)
 {
-
     if (input == 87 || input == 119) //W
     {
         if (matriz[bolinha.x -1][bolinha.y] == 1)
@@ -281,7 +280,6 @@ int verificarParedes(int matriz[LINHA][COLUNA], Personagem bolinha, int input)
     else{
         return 0;
     }
-  
 }
 
 int ganhar(int matriz[LINHA][COLUNA], Personagem bolinha)
@@ -307,19 +305,19 @@ int ganhar(int matriz[LINHA][COLUNA], Personagem bolinha)
 void andar(int matriz[LINHA][COLUNA], Personagem *bolinha, int input)
 {
     // W
-    if (input == 87 || input == 119 && verificarParedes(matriz, *bolinha, input) == 0)
+    if ((input == 87 || input == 119) && (verificarParedes(matriz, *bolinha, input) == 0))
     {
         bolinha->x = bolinha->x - 1;
     }
-    else if (input == 68 || input == 100 && verificarParedes(matriz, *bolinha, input) == 0) // D
+    else if ((input == 68 || input == 100) && (verificarParedes(matriz, *bolinha, input) == 0)) // D
     {
         bolinha->y = bolinha->y + 1;
     }
-    else if (input == 83 || input == 115 && verificarParedes(matriz, *bolinha, input) == 0) // S
+    else if ((input == 83 || input == 115) && (verificarParedes(matriz, *bolinha, input) == 0)) // S
     {
         bolinha->x = bolinha->x + 1;
     }
-    else if (input == 65 || input == 97 && verificarParedes(matriz, *bolinha, input) == 0) // A
+    else if ((input == 65 || input == 97) && (verificarParedes(matriz, *bolinha, input) == 0)) // A
     {
         bolinha->y = bolinha->y - 1;
     }
