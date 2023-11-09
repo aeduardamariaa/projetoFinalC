@@ -1,43 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
-
-// typedef struct
-// {
-//     int x;
-//     int y;
-// } Personagem;
-
-
-#include "../Headers/jogo.h"
 #include "../Headers/jogo.c"
+#include "../Headers/tabuleiro.c"
 
-
-// #include "../Headers/tabuleiro.h"
-// #include "../Headers/tabuleiro.c"
-
-// int LINHA2 = 17;
-// int COLUNA2 = 17;
-
-// int matriz2[17][17] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-//                                 {1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-//                                 {1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-//                                 {1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 3},
-//                                 {1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1},
-//                                 {1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1},
-//                                 {1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1},
-//                                 {1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1},
-//                                 {1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1},
-//                                 {1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1},
-//                                 {1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1},
-//                                 {1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1},
-//                                 {1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1},
-//                                 {2, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1},
-//                                 {1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1},
-//                                 {1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-//                                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
-
-
+int LINHA; 
+int COLUNA;
 void menu()
 {
     printf("\n***************** M E N U *****************\n\n");
@@ -48,111 +16,124 @@ void menu()
     printf("\n0 - SAIR\n\n");
 }
 
-
-
 int main(void)
 {
-    menu();
+    int op = 10;
     Personagem bolinha;
-    
-    bolinha.x=13;
-    bolinha.y=0;
 
-    while (1)
+    
+
+    while (op != 0)
     {
-        mostrarLabirinto(matriz, bolinha);
-        int input;
+        menu();
+        printf("Qual sua escolha: ");
+        scanf("%d", &op);
 
-        input = getch();
-
-        
-
-        if (kbhit() == 0)
-        {
-
-        if (ganhar(matriz, bolinha) == 3)
-        {
-            printf("Ganhouuuuuuuuuuuuu!");
-            break;
-        }
-        else
-        {
-            andar(matriz, &bolinha, input);
-        }
         system("cls");
-        }
-    }
-    
 
+        switch (op)
+        {
+        case 1:
+            bolinha.x = 3;
+            bolinha.y = 0;
 
+            LINHA =10;
+            COLUNA=10;
 
+            while (1)
+            {
+                mostrarLabirinto(matriz1, bolinha);
 
+                int input;
 
+                input = getch();
 
+                if (kbhit() == 0)
+                {
 
+                    if (ganhar(matriz1, bolinha) == 3)
+                    {
+                        printf("Ganhouuuuuuuuuuuuu!");
+                        break;
+                    }
+                    else
+                    {
+                        andar(matriz1, &bolinha, input);
+                    }
+                }
+                system("cls");
+            }
 
-
-
-
-
-
-
-
-
-
-    // int op;
-
-    // while (op != 0 )
-    // {   
-    //     menu();
-    //     printf("\nQual opcao voce deseja: ");
-    //     scanf(" %d", &op);
-
-    //     switch (op)
-    //     {
-    //     case 1:
-
-
-    //         bolinha.x = 0;
-    //         bolinha.y = 3;
-
-    //         while (1)
-    //         {
-    //         mostrarLabirinto(matriz, bolinha);
-
-    //         int input;
-
-    //         input = getch();
-
-
-    //         if (kbhit() == 0)
-    //         {
-
-    //         if (ganhar(matriz, bolinha) == 3)
-    //         {
-    //             printf("Ganhouuuuuuuuuuuuu!");
-    //             break;
-    //         }
-    //         else
-    //         {
-    //             andar(matriz, &bolinha, input);
-    //         }
-    //         system("cls");
-            
-    //             }
-    //         }
-
-    //         break;
+            break;
         
-    //     case 2:
-    //         break;
+        case 2:
+            bolinha.x = 13;
+            bolinha.y = 0;
 
-    //     case 3:
-    //         break;
+            LINHA =17;
+            COLUNA=17;
 
-    //     case 4:
-    //         break;
-    //     default:
-    //         printf("\nSaindo!");
-    //     } 
+            while (1)
+            {
+                mostrarLabirinto(matriz2, bolinha);
+
+                int input;
+
+                input = getch();
+
+                if (kbhit() == 0)
+                {
+                    if (ganhar(matriz2, bolinha) == 3)
+                    {
+                        printf("Ganhouuuuuuuuuuuuu!");
+                        break;
+                    }
+                    else
+                    {
+                        andar(matriz2, &bolinha, input);
+                    }
+                }
+                system("cls");
+            }
+
+            break;
+        case 3:
+
+            bolinha.x = 0;
+            bolinha.y = 1;
+
+            LINHA =50;
+            COLUNA=50;
+
+            while (1)
+            {
+                mostrarLabirinto(matriz3, bolinha);
+
+                int input;
+
+                input = getch();
+
+                if (kbhit() == 0)
+                {
+                    if (ganhar(matriz3, bolinha) == 3)
+                    {
+                        printf("Ganhouuuuuuuuuuuuu!");
+                        break;
+                    }
+                    else
+                    {
+                        andar(matriz3, &bolinha, input);
+                    }
+                }
+                system("cls");
+            }
+            break;
+
+        case 4:
+            break;
+        default:
+            printf("\nSaindo!");
+        } 
+
+    }
 }
