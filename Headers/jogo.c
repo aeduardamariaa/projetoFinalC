@@ -1,6 +1,5 @@
 
 #include "../Headers/jogo.h"
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
@@ -130,5 +129,29 @@ void andar(int matriz[LINHA][COLUNA], Personagem *bolinha, int input)
                 }
                 
             }
+    }
+}
+void jogo(int matriz[LINHA][COLUNA], Personagem bolinha){
+    while (1)
+    {
+        mostrarLabirinto(matriz, bolinha);
+
+        int input;
+
+        input = getch();
+
+        if (kbhit() == 0)
+        {
+            if (ganhar(matriz, bolinha) == 3)
+            {
+                printf("Ganhouuuuuuuuuuuuu!");
+                break;
+            }
+            else
+            {
+                andar(matriz, &bolinha, input);
+            }
+        }
+        system("cls");
     }
 }
