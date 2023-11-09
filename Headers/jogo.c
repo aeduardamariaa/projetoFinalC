@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
+#include <time.h>
+
 
 void mostrarLabirinto(int matriz[LINHA][COLUNA], Personagem bolinha)
 {
@@ -131,17 +133,37 @@ void andar(int matriz[LINHA][COLUNA], Personagem *bolinha, int input)
             }
     }
 }
+
+
+struct tm tempoAtual()
+{
+    struct tm *data_hora_atual;  
+    time_t segundos;
+    time(&segundos);   
+    data_hora_atual = localtime(&segundos);   
+    return *data_hora_atual;
+}
 void jogo(int matriz[LINHA][COLUNA], Personagem bolinha){
+    int atualizar_tela = 1;
+    int tempo_inicial_minutos;
+    int tempo_inicial_segundos;
+    struct tm tempo_decorrido;
+    struct tm tempo_restante;
+    tempo_inicial_minutos = tempoAtual().tm_min;
+    
+
+    int input;
+    
+
     while (1)
     {
-        mostrarLabirinto(matriz, bolinha);
-
-        int input;
-
-        input = getch();
-
-        if (kbhit() == 0)
+        // tempo_decorrido = (tempoAtual()) - tempo_inicial;
+        // tempo_restante = 30 - tempo_decorrido;
+        printf("\n%d", tempo_inicial_minutos);
+        if (kbhit())
         {
+            atualizar_tela = 1;
+            input = getch();
             if (ganhar(matriz, bolinha) == 3)
             {
                 printf("Ganhouuuuuuuuuuuuu!");
@@ -152,6 +174,18 @@ void jogo(int matriz[LINHA][COLUNA], Personagem bolinha){
                 andar(matriz, &bolinha, input);
             }
         }
-        system("cls");
+
+        if (atualizar_tela)
+        {
+            system("cls");
+            mostrarLabirinto(matriz, bolinha);
+            // printf("\nTimer: %d : %d", tempo_decorrido);
+            atualizar_tela = 0;
+        }
+
+        // if (tempo_restante < 0)
+        // {
+        //     printf("\nVoe perdeu :\\");
+        // }
     }
 }

@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
+#include <time.h>
+#include <windows.h>
 #include "../Headers/jogo.c"
 #include "../Headers/tabuleiro.h"
+
 
 int LINHA; 
 int COLUNA;
@@ -21,6 +24,30 @@ void menuDificuldades()
     printf("\n3 - Nível Dificil");
 }
 
+int temporizador(int minutos, int segundos, int parar)
+{
+    while (parar!=0)
+    {
+        Sleep(1000);
+        system("cls");
+
+        printf("\n %2i : %2i", minutos, segundos);
+
+        segundos --;
+
+        if(segundos == 0 && minutos == 0){
+            printf("\nO tempo acabou");
+            break;
+        }
+        if (minutos > 0 && segundos == 0)
+        {
+            minutos --;
+            segundos = 59;
+        }
+    }
+}
+
+
 int main(void)
 {
     int op = 10;
@@ -32,7 +59,6 @@ int main(void)
         menu();
         printf("\nQual sua escolha: \n");
         scanf("%d", &op);
-
         switch (op)
         {
         case 1:
