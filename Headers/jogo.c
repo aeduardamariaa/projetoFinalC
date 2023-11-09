@@ -159,7 +159,6 @@ void jogo(int matriz[LINHA][COLUNA], Personagem bolinha){
     {
         // tempo_decorrido = (tempoAtual()) - tempo_inicial;
         // tempo_restante = 30 - tempo_decorrido;
-        printf("\n%d", tempo_inicial_minutos);
         if (kbhit())
         {
             atualizar_tela = 1;
