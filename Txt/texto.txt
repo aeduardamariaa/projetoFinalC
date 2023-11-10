@@ -1,0 +1,53 @@
+	printf("    %c%c      %c%c%c%c    %c%c%c%c%c%c    %c%c    %c%c%c%c                          
+	printf("    %c%c%c%c    %c%c%c%c%c%c%c%c  %c%c%c%c%c%c  %c%c%c%c  %c%c%c%c%c%c                         
+	printf("    %c%c%c%c  %c%c%c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c                    
+	printf("      %c%c%c%c%c%c%c%c%c%c  %c%c%c%c  %c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c                
+	printf("        %c%c%c%c%c%c%c%c  %c%c%c%c  %c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c
+	printf("        %c%c%c%c%c%c    %c%c%c%c  %c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c                       
+	printf("        %c%c%c%c%c%c      %c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c%c%c%c%c                             
+	printf("          %c%c%c%c        %c%c%c%c%c%c      %c%c%c%c%c%c                             
+
+
+\n",fontA,fontA,fontA,fontA,fontA,fontA,fontA,fontA,fontA,fontA,fontA,fontA,	fontA,fontA,fontA,fontA,fontA,fontA );
+
+\n",fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA	    ,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB);
+
+\n",fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontA,fontA,fontB,fontB,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB	,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB);
+
+\n",fontA,fontA,fontA,fontA,fontA,fontA,fontA,fontA,fontB,fontB,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB		,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB	);
+
+\n",fontA,fontA,fontA,fontA,fontB,fontB,fontB,fontB,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB);
+
+\n",fontA,fontA,fontA,fontA,fontB,fontB,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB					,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB);
+
+\n",fontA,fontA,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontA,fontA,fontB,fontB,fontB,fontB,fontA,fontA,fontA,fontA,fontA,fontA,fontB,fontB,fontB,fontB);
+
+\n",fontB,fontB,fontB,fontB,fontB,fontB,fontB,fontB,fontB,fontB,,fontB,fontB,fontB,fontB,fontB,fontB);
+
+
+ 
+printf("    %c%c      %c%c%c%c  %c%c%c%c  %c%c      %c%c%c%c  %c%c%c%c                  
+printf("    %c%c%c%c    %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c    %c%c%c%c%c%c%c%c%c%c%c%c                  
+printf("    %c%c%c%c    %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c%c%c%c%c%c%c               
+printf("    %c%c%c%c%c%c  %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c%c%c%c%c%c%c%c%c
+printf("    %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c    %c%c%c%c%c%c%c%c%c%c%c%c                
+printf("    %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c    %c%c%c%c%c%c  %c%c%c%c                               
+printf("      %c%c  %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c    %c%c%c%c%c%c%c%c%c%c  
+printf("        %c%c  %c%c%c%c    %c%c%c%c  %c%c      %c%c%c%c  %c%c%c%c                     
+
+
+\n",fontA,fontA,fontA,fontA,,fontA,fontA,fontA,fontA,fontA,fontA,fontA,fontA,fontA,fontA,fontA,fontA,fontA,fontA,fontA,fontA);
+
+\n",fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontA,fontA,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB);
+
+\n",fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB);
+
+\n",fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontA,fontA,fontB,fontB	,fontA,fontA,fontA,fontA,fontB,fontB);
+
+\n",fontA,fontA,fontB,fontB,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB);
+
+\n",fontA,fontA,fontB,fontB,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB,fontB,fontB,fontB,fontB);
+
+\n",fontA,fontA,,fontA,fontA,,fontA,fontA,fontB,fontB,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA,fontB,fontB,fontA,fontA,fontA,fontA);
+
+\n",fontB,fontB,fontB,fontB,fontB,fontB,fontB,fontB,fontB,fontB,fontB,fontB,fontB,fontB,fontB,fontB,fontB,fontB);
