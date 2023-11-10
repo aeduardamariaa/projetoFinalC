@@ -5,6 +5,29 @@
 #include <conio.h>
 #include <time.h>
 
+void ganhou()
+{
+    int fontA = 219, fontB = 176;
+
+    printf("\n \n \n \n");
+    printf("\n\t    %c%c      %c%c%c%c    %c%c%c%c%c%c    %c%c    %c%c%c%c \n", fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA);
+    printf("\t    %c%c%c%c    %c%c%c%c%c%c%c%c  %c%c%c%c%c%c  %c%c%c%c  %c%c%c%c%c%c\n", fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB);
+    printf("\t    %c%c%c%c  %c%c%c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c\n", fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB);
+    printf("\t      %c%c%c%c%c%c%c%c%c%c  %c%c%c%c  %c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c\n", fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB);
+    printf("\t        %c%c%c%c%c%c%c%c  %c%c%c%c  %c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c\n", fontA, fontA, fontA, fontA, fontB, fontB, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB);
+    printf("\t        %c%c%c%c%c%c    %c%c%c%c  %c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c\n", fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB);
+    printf("\t        %c%c%c%c%c%c      %c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c%c%c%c%c\n", fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontA, fontA, fontB, fontB, fontB, fontB, fontA, fontA, fontA, fontA, fontA, fontA, fontB, fontB, fontB, fontB);
+    printf("\t          %c%c%c%c        %c%c%c%c%c%c      %c%c%c%c%c%c\n", fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB);
+
+    printf("\n\t    %c%c      %c%c%c%c  %c%c%c%c  %c%c      %c%c%c%c  %c%c%c%c  \n", fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA);
+    printf("\t    %c%c%c%c    %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c    %c%c%c%c%c%c%c%c%c%c%c%c \n", fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB);
+    printf("\t    %c%c%c%c    %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c%c%c%c%c%c%c  \n", fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB);
+    printf("\t    %c%c%c%c%c%c  %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c%c%c%c%c%c%c%c%c \n", fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB);
+    printf("\t    %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c    %c%c%c%c%c%c%c%c%c%c%c%c \n", fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB);
+    printf("\t    %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c    %c%c%c%c%c%c  %c%c%c%c  \n", fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontB, fontB, fontB, fontB);
+    printf("\t      %c%c  %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c    %c%c%c%c%c%c%c%c%c%c \n", fontA, fontA,  fontA, fontA,  fontA, fontA, fontB, fontB, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA);
+    printf("\t        %c%c  %c%c%c%c    %c%c%c%c  %c%c      %c%c%c%c  %c%c%c%c  \n", fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB,fontB);
+}
 
 void mostrarLabirinto(int matriz[LINHA][COLUNA], Personagem bolinha)
 {
@@ -180,7 +203,9 @@ void jogo(int matriz[LINHA][COLUNA], Personagem bolinha){
             input = getch();
             if (ganhar(matriz, bolinha) == 3)
             {
-                printf("Ganhouuuuuuuuuuuuu!");
+                system("cls");
+                ganhou();
+                Sleep(3000);
                 break;
             }
             else
