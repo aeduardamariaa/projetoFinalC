@@ -184,18 +184,30 @@ void jogo(int matriz[LINHA][COLUNA], Personagem bolinha){
     float tempo_restante;
     tempo_inicial = tempoAtual();
     tempo_inicial_segundos = seconds(&tempo_inicial);
-    
+    float tempo = 10;
     
     int input;
-    
 
+    if (LINHA == 17)
+    {
+        tempo = 15;
+    }
+    else if (LINHA == 35)
+    {
+        tempo = 40;
+    }
+    else if (LINHA == 50)
+    {
+        tempo = 50;
+    }
+    
     while (1)
     {
         tempo_atual = tempoAtual();
         tempo_atual_segundos = seconds(&tempo_atual);
         
         tempo_decorrido = tempo_atual_segundos - tempo_inicial_segundos;
-        tempo_restante = 59.00 - tempo_decorrido;
+        tempo_restante = tempo - tempo_decorrido;
 
         if (kbhit())
         {

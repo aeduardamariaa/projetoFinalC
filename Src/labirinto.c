@@ -61,19 +61,19 @@ int main(void)
                     bolinha.x = 3;
                     bolinha.y = 0;
 
-                    LINHA =10;
-                    COLUNA=10;
+                    LINHA =17;
+                    COLUNA=17;
 
                     jogo(matriz1, bolinha);
 
                     break;
                 
                 case 2:
-                    bolinha.x = 13;
-                    bolinha.y = 0;
+                    bolinha.x = 0;
+                    bolinha.y = 1;
 
-                    LINHA =17;
-                    COLUNA=17;
+                    LINHA =35;
+                    COLUNA=35;
 
                     jogo(matriz2, bolinha);
                     break;
@@ -101,6 +101,5 @@ int main(void)
             printf("saundo");
             break;
         }
-
     }
 }
