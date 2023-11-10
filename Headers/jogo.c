@@ -143,22 +143,41 @@ struct tm tempoAtual()
     data_hora_atual = localtime(&segundos);   
     return *data_hora_atual;
 }
+
+float seconds(struct tm *data_hora_atual)
+{
+    float secs;
+
+    secs = (data_hora_atual->tm_sec) + 60*(data_hora_atual->tm_min + (60 * data_hora_atual->tm_hour));
+    return(secs);
+
+}
 void jogo(int matriz[LINHA][COLUNA], Personagem bolinha){
     int atualizar_tela = 1;
-    int tempo_inicial_minutos;
-    int tempo_inicial_segundos;
-    struct tm tempo_decorrido;
-    struct tm tempo_restante;
-    tempo_inicial_minutos = tempoAtual().tm_min;
+    struct tm tempo_inicial;
+    struct tm tempo_atual;
+    float tempo_inicial_segundos;
+    float tempo_atual_segundos;
+    float tempo_decorrido;
+    float tempo_restante;
+    tempo_inicial = tempoAtual();
+    tempo_inicial_segundos = seconds(&tempo_inicial);
     
-
+    
     int input;
     
 
     while (1)
     {
-        // tempo_decorrido = (tempoAtual()) - tempo_inicial;
-        // tempo_restante = 30 - tempo_decorrido;
+        printf("%f", tempo_inicial_segundos);
+        tempo_atual = tempoAtual();
+        tempo_atual_segundos = seconds(&tempo_inicial);
+        
+        tempo_decorrido = tempo_atual_segundos - tempo_inicial_segundos;
+        printf("\nOLAAA%f", tempo_decorrido);
+        tempo_restante = 30.00 - tempo_decorrido;
+        printf("\n OIIII%f", tempo_restante);
+
         if (kbhit())
         {
             atualizar_tela = 1;
@@ -178,13 +197,13 @@ void jogo(int matriz[LINHA][COLUNA], Personagem bolinha){
         {
             system("cls");
             mostrarLabirinto(matriz, bolinha);
-            // printf("\nTimer: %d : %d", tempo_decorrido);
+            printf("\nTimer: 0 : %f", tempo_restante);
             atualizar_tela = 0;
         }
 
-        // if (tempo_restante < 0)
-        // {
-        //     printf("\nVoe perdeu :\\");
-        // }
+        if (tempo_restante < 0)
+        {
+            printf("\nVoce perdeu :\\");
+        }
     }
 }
