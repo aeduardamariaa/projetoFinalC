@@ -175,18 +175,10 @@ float seconds(struct tm *data_hora_atual)
     return(secs);
 
 }
-void jogo(int matriz[LINHA][COLUNA], Personagem bolinha){
-    int atualizar_tela = 1;
-    struct tm tempo_inicial, tempo_atual;
-    float tempo_inicial_segundos;
-    float tempo_atual_segundos;
-    float tempo_decorrido;
-    float tempo_restante;
-    tempo_inicial = tempoAtual();
-    tempo_inicial_segundos = seconds(&tempo_inicial);
-    float tempo = 10;
-    
-    int input;
+int defTempo(int matriz[LINHA][COLUNA])
+{
+
+    float tempo = 0;
 
     if (LINHA == 17)
     {
@@ -201,6 +193,22 @@ void jogo(int matriz[LINHA][COLUNA], Personagem bolinha){
         tempo = 50;
     }
     
+    return tempo;
+}
+void jogo(int matriz[LINHA][COLUNA], Personagem bolinha){
+    int atualizar_tela = 1;
+    struct tm tempo_inicial, tempo_atual;
+    float tempo_inicial_segundos;
+    float tempo_atual_segundos;
+    float tempo_decorrido;
+    float tempo_restante;
+    tempo_inicial = tempoAtual();
+    tempo_inicial_segundos = seconds(&tempo_inicial);
+    
+    int input;
+
+    int tempo = defTempo(matriz);
+
     while (1)
     {
         tempo_atual = tempoAtual();
