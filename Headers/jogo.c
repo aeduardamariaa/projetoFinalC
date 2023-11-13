@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <time.h>
+#include <windows.h>
+
 
 void ganhou()
 {
@@ -196,27 +198,18 @@ int defTempo(int matriz[LINHA][COLUNA])
     return tempo;
 }
 void jogo(int matriz[LINHA][COLUNA], Personagem bolinha){
-    int atualizar_tela = 1;
+    int input;
     struct tm tempo_inicial, tempo_atual;
-    float tempo_inicial_segundos;
-    float tempo_atual_segundos;
-    float tempo_decorrido;
-    float tempo_restante;
+    float tempo_inicial_segundos, tempo_atual_segundos, tempo_decorrido, tempo_restante;
     tempo_inicial = tempoAtual();
     tempo_inicial_segundos = seconds(&tempo_inicial);
-    
-    int input;
 
     int tempo = defTempo(matriz);
+    int atualizar_tela = 1;
+    clock_t inicio = clock();
 
     while (1)
     {
-        tempo_atual = tempoAtual();
-        tempo_atual_segundos = seconds(&tempo_atual);
-        
-        tempo_decorrido = tempo_atual_segundos - tempo_inicial_segundos;
-        tempo_restante = tempo - tempo_decorrido;
-
         if (kbhit())
         {
             atualizar_tela = 1;
@@ -225,7 +218,6 @@ void jogo(int matriz[LINHA][COLUNA], Personagem bolinha){
             {
                 system("cls");
                 ganhou();
-                Sleep(3000);
                 break;
             }
             else
@@ -234,12 +226,18 @@ void jogo(int matriz[LINHA][COLUNA], Personagem bolinha){
             }
         }
 
-        if (atualizar_tela)
+        tempo_atual = tempoAtual();
+        tempo_atual_segundos = seconds(&tempo_atual);
+        tempo_decorrido = tempo_atual_segundos - tempo_inicial_segundos;
+        tempo_restante = tempo - tempo_decorrido;
+
+        if (atualizar_tela || ((clock() - inicio) / CLOCKS_PER_SEC) >= 1)
         {
             system("cls");
             mostrarLabirinto(matriz, bolinha);
             printf("\nTimer: 0 : %2.f", tempo_restante);
             atualizar_tela = 0;
+            inicio = clock();
         }
 
         if (tempo_restante < 0)
