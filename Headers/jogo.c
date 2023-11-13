@@ -218,6 +218,7 @@ void jogo(int matriz[LINHA][COLUNA], Personagem bolinha){
             {
                 system("cls");
                 ganhou();
+                Sleep(3000);
                 break;
             }
             else
