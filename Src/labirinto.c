@@ -58,7 +58,7 @@ int main(void)
             switch (op)
             {
                 case 1:
-                    bolinha.x = 3;
+                    bolinha.x = 13;
                     bolinha.y = 0;
 
                     LINHA =17;
