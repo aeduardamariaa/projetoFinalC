@@ -28,7 +28,7 @@ int main()
     FILE *arquivo;
 
     char linha[100];
-    int igual = 0;
+    int igual = 0, jaTem = 0;
     long posicaoInicial;
     int tempo1 = 0;
     int tempo2 = 0;
@@ -55,32 +55,39 @@ int main()
         tamanho++;
     }
     fclose(arquivo);
-
+    
+    char jogNome[20];
+    char histNome[20];
+    strcpy(jogNome, jogador.Nome);
 
     // Verifica se tem outro nome igual
     for(int i = 0; i < tamanho; i++)
     {   
-        printf("\n%s", passado[i].NomeP);
+        strcpy(histNome, passado[i].NomeP);
+        
         for(int j = 0; j < strlen(jogador.Nome); j++)
         {
-            if (passado[i].NomeP[j] == jogador.Nome[j])
+            if (histNome[j] == jogNome[j])
             {   
                 
-                printf("%s = ",jogador.Nome[j]);
                 igual++;
             } 
+            if (igual >= strlen(jogNome))
+            {
+                jaTem = 1;
+            } 
         }
+        igual = 0;
     }
-
+    
     arquivo = fopen("Ranking.txt", "a");
-    if (igual < strlen(jogador.Nome))
+    if(jaTem == 0)
     {
-        //Se o "igual" não tiver o tamanho do nome inserido pelo jogador, ele adiciona no arquivo
         fprintf(arquivo, "%s %d %d %d\n", jogador.Nome, jogador.Tempo1, jogador.Tempo2, jogador.Tempo3);
-    } 
+    }
     else
     {
-        printf("\nJa tem um jogador com esse nome.%i", igual);
+        printf("Ja possui um jogador com esse nome.");
     }
     fclose(arquivo);
    
