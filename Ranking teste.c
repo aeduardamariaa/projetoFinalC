@@ -203,14 +203,16 @@ int main()
     char nomeJogador[20] = "Clebeer";
     
     atualizarScore(passado, &tamanho);
+    printf("Tamanho do arquivo: %i\n",tamanho);
 
     for (int i = 0; i < tamanho; i++) {
         printf("Nome: %s, TempoP1: %d, TempoP2: %d, TempoP3: %d\n", passado[i].NomeP, passado[i].TempoP1, passado[i].TempoP2, passado[i].TempoP3);
     }    
     
     adicionarJogadorTempo(nomeJogador, 5000, 5000, 101, passado, tamanho);
-    
+
     imprimirTresMaioresTempoP1(passado, tamanho);
+
     imprimirTresMaioresTempoP2(passado, tamanho);
     imprimirTresMaioresTempoP3(passado, tamanho);
     
