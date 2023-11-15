@@ -4,7 +4,7 @@ Amanda 9 7 6
 Thiago 5 8 7
 Isadora 6 9 8
 Daniel 8 5 7
-Julia 7 6 9
+Julia 8 2000 20
 Lucas 4 7 8
 Larissa 9 5 6
 Pedro 8 6 7
@@ -14,7 +14,7 @@ Fernanda 5 7 9
 Gustavo 9 6 8
 Raquel 8 5 7
 Felipe 7 9 6
-Juliana 6 7 8
+Juliana 10 10 8
 Rafael 8 6 9
 Carolina 7 8 5
 Matheus 5 9 7
@@ -26,5 +26,8 @@ Alexandre 5 4 3
 Junior 5 5 5
 YSA 3 3 3
 Teste 2 2 2
-DUDU 30 30 30
-JESSICA 50 30 30
+DUDU 1000 600 100
+JESSICA 1000 600 100
+Cleber 10 2000 40
+Cleberr 10 20 40
+Clebeer 5000 5000 101

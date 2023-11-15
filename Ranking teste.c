@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdlib.h>
 #include <string.h>
 
 typedef struct
@@ -21,43 +20,37 @@ typedef struct
 
 } Score;
 
-int main()
+void atualizarScore(Score passado[], int *tamanho) {
+    FILE *arquivo;
+    *tamanho = 0;
+    char linha[100];
+    
+    arquivo = fopen("Ranking.txt", "r"); 
+
+    while(fgets(linha,sizeof(linha),arquivo) != NULL)
+    {
+        sscanf(linha, "%s %d %d %d", passado[*tamanho].NomeP, &passado[*tamanho].TempoP1, &passado[*tamanho].TempoP2, &passado[*tamanho].TempoP3);
+        (*tamanho)++;
+    }
+    fclose(arquivo);
+}
+
+void adicionarJogadorTempo(char *inputNome, int novotempo1, int novotempo2, int novotempo3, Score passado[],int tamanho)
 {
-    Score passado[50];
     Jogador jogador;
     FILE *arquivo;
 
-    char linha[100];
-    int igual = 0, jaTem = 0;
-    long posicaoInicial;
-    int tempo1 = 0;
-    int tempo2 = 0;
-    int tempo3 = 0;
-    char nome[20];
-
-    arquivo = fopen("Ranking.txt", "r"); 
-
-    printf("Digite o nome: ");
-    scanf("%s", jogador.Nome);
-    printf("Digite o tempo: ");
-    scanf(" %d", &jogador.Tempo1);
-    printf("Digite o tempo: ");
-    scanf(" %d", &jogador.Tempo2);
-    printf("Digite o tempo: ");
-    scanf(" %d", &jogador.Tempo3);
+    int igual = 0, jaTem = 0, tempoalterado = 0;
     
-    int tamanho = 0;
+    strcpy(jogador.Nome, inputNome);
     
-    //Pega todas da informações do arquivo e e armazena na struck Score de com o tamanho da variavel "tamanho"
-    while(fgets(linha,sizeof(linha),arquivo) != NULL)
-    {
-        sscanf(linha, "%s %d %d %d", passado[tamanho].NomeP, &passado[tamanho].TempoP1, &passado[tamanho].TempoP2, &passado[tamanho].TempoP3);
-        tamanho++;
-    }
-    fclose(arquivo);
+    jogador.Tempo1 = novotempo1;
+    jogador.Tempo2 = novotempo2;
+    jogador.Tempo3 = novotempo3;
     
     char jogNome[20];
     char histNome[20];
+    
     strcpy(jogNome, jogador.Nome);
 
     // Verifica se tem outro nome igual
@@ -69,12 +62,35 @@ int main()
         {
             if (histNome[j] == jogNome[j])
             {   
-                
                 igual++;
             } 
-            if (igual >= strlen(jogNome))
+            if (igual >= strlen(jogNome) && igual == strlen(histNome))
             {
                 jaTem = 1;
+                
+                if(passado[i].TempoP1 != novotempo1)
+                {
+                    passado[i].TempoP1 = novotempo1;
+                    tempoalterado = 1;
+                }
+                if(passado[i].TempoP2 != novotempo2)
+                {   
+                    passado[i].TempoP2 = novotempo2;
+                    tempoalterado = 1;
+                }
+                if(passado[i].TempoP3 != novotempo3)
+                {   
+                    passado[i].TempoP3 = novotempo3;
+                    tempoalterado = 1;
+                }
+                
+                arquivo = fopen("Ranking.txt", "w"); 
+
+                for(int k = 0; k < tamanho; k++)
+                {   
+                    fprintf(arquivo, "%s %d %d %d\n", passado[k].NomeP, passado[k].TempoP1, passado[k].TempoP2, passado[k].TempoP3);
+                }
+                fclose(arquivo);
             } 
         }
         igual = 0;
@@ -83,235 +99,119 @@ int main()
     arquivo = fopen("Ranking.txt", "a");
     if(jaTem == 0)
     {
+        printf("Adicionado com sucesso.\n");
         fprintf(arquivo, "%s %d %d %d\n", jogador.Nome, jogador.Tempo1, jogador.Tempo2, jogador.Tempo3);
+    }
+    else if (jaTem == 1 && tempoalterado == 0)
+    {
+        printf("Ja possui um jogador com esse nome.\n");
     }
     else
     {
-        printf("Ja possui um jogador com esse nome.");
+        printf("Tempo alterado\n");
     }
     fclose(arquivo);
-   
     
-    return 0;
+}
+
+void imprimirTresMaioresTempoP1(Score passado[], int tamanho) {
+    int tresMaiores[3] = {0};
+    char nomes[3][50];
+
+    for (int i = 0; i < tamanho; i++) {
+        if (passado[i].TempoP1 > tresMaiores[0]) {
+            strcpy(nomes[2], nomes[1]);
+            strcpy(nomes[1], nomes[0]);
+            strcpy(nomes[0], passado[i].NomeP);
+            tresMaiores[2] = tresMaiores[1];
+            tresMaiores[1] = tresMaiores[0];
+            tresMaiores[0] = passado[i].TempoP1;
+        } else if (passado[i].TempoP1 > tresMaiores[1]) {
+            strcpy(nomes[2], nomes[1]);
+            strcpy(nomes[1], passado[i].NomeP);
+            tresMaiores[2] = tresMaiores[1];
+            tresMaiores[1] = passado[i].TempoP1;
+        } else if (passado[i].TempoP1 > tresMaiores[2]) {
+            strcpy(nomes[2], passado[i].NomeP);
+            tresMaiores[2] = passado[i].TempoP1;
+        }
+    }
+
+    printf("Os três maiores valores de TempoP1 são: %d (%s), %d (%s), %d (%s)\n", tresMaiores[0], nomes[0], tresMaiores[1], nomes[1], tresMaiores[2], nomes[2]);
 }
 
 
-// #include <stdio.h>
-// #include <stdlib.h>
-// #include <stdlib.h>
-// #include <string.h>
+void imprimirTresMaioresTempoP2(Score passado[], int tamanho) {
+    int tresMaiores[3] = {0};
+    char nomes[3][50];
 
-// typedef struct
-// {
-//     char Nome[50];
-//     int Tempo1;
-//     int Tempo2;
-//     int Tempo3;
+    for (int i = 0; i < tamanho; i++) {
+        if (passado[i].TempoP2 > tresMaiores[0]) {
+            strcpy(nomes[2], nomes[1]);
+            strcpy(nomes[1], nomes[0]);
+            strcpy(nomes[0], passado[i].NomeP);
+            tresMaiores[2] = tresMaiores[1];
+            tresMaiores[1] = tresMaiores[0];
+            tresMaiores[0] = passado[i].TempoP2;
+        } else if (passado[i].TempoP2 > tresMaiores[1]) {
+            strcpy(nomes[2], nomes[1]);
+            strcpy(nomes[1], passado[i].NomeP);
+            tresMaiores[2] = tresMaiores[1];
+            tresMaiores[1] = passado[i].TempoP2;
+        } else if (passado[i].TempoP2 > tresMaiores[2]) {
+            strcpy(nomes[2], passado[i].NomeP);
+            tresMaiores[2] = passado[i].TempoP2;
+        }
+    }
 
-// } Jogador;
+    printf("Os três maiores valores de TempoP2 são: %d (%s), %d (%s), %d (%s)\n", tresMaiores[0], nomes[0], tresMaiores[1], nomes[1], tresMaiores[2], nomes[2]);
+}
 
-// typedef struct
-// {
-//     char NomeP[50];
-//     int TempoP1;
-//     int TempoP2;
-//     int TempoP3;
 
-// } Score;
 
-// void adicionarJogador(char *inputNome, int novotempo1, int novotempo2, int novotempo3)
-// {
-//     Score passado[50];
-//     Jogador jogador;
-//     FILE *arquivo;
+void imprimirTresMaioresTempoP3(Score passado[], int tamanho) {
+    int tresMaiores[3] = {0};
+    char nomes[3][50];
 
-//     char linha[100];
-//     int igual = 0, jaTem = 0;
-//     long posicaoInicial;
-//     char nome[20];
+    for (int i = 0; i < tamanho; i++) {
+        if (passado[i].TempoP3 > tresMaiores[0]) {
+            strcpy(nomes[2], nomes[1]);
+            strcpy(nomes[1], nomes[0]);
+            strcpy(nomes[0], passado[i].NomeP);
+            tresMaiores[2] = tresMaiores[1];
+            tresMaiores[1] = tresMaiores[0];
+            tresMaiores[0] = passado[i].TempoP3;
+        } else if (passado[i].TempoP3 > tresMaiores[1]) {
+            strcpy(nomes[2], nomes[1]);
+            strcpy(nomes[1], passado[i].NomeP);
+            tresMaiores[2] = tresMaiores[1];
+            tresMaiores[1] = passado[i].TempoP3;
+        } else if (passado[i].TempoP3 > tresMaiores[2]) {
+            strcpy(nomes[2], passado[i].NomeP);
+            tresMaiores[2] = passado[i].TempoP3;
+        }
+    }
 
-//     arquivo = fopen("Ranking.txt", "r"); 
+    printf("Os três maiores valores de TempoP3 são: %d (%s), %d (%s), %d (%s)\n", tresMaiores[0], nomes[0], tresMaiores[1], nomes[1], tresMaiores[2], nomes[2]);
+}
 
+int main()
+{   
+    FILE *arquivo;
+    int tamanho = 0;
+    Score passado[50];
+    char nomeJogador[20] = "Clebeer";
     
-//     strcpy(jogador.Nome, inputNome);
+    atualizarScore(passado, &tamanho);
+
+    for (int i = 0; i < tamanho; i++) {
+        printf("Nome: %s, TempoP1: %d, TempoP2: %d, TempoP3: %d\n", passado[i].NomeP, passado[i].TempoP1, passado[i].TempoP2, passado[i].TempoP3);
+    }    
     
-//     jogador.Tempo1 = novotempo1;
-//     jogador.Tempo2 = novotempo2;
-//     jogador.Tempo3 = novotempo3;
+    adicionarJogadorTempo(nomeJogador, 5000, 5000, 101, passado, tamanho);
     
-//     int tamanho = 0;
+    imprimirTresMaioresTempoP1(passado, tamanho);
+    imprimirTresMaioresTempoP2(passado, tamanho);
+    imprimirTresMaioresTempoP3(passado, tamanho);
     
-//     //Pega todas da informações do arquivo e e armazena na struck Score de com o tamanho da variavel "tamanho"
-//     while(fgets(linha,sizeof(linha),arquivo) != NULL)
-//     {
-//         sscanf(linha, "%s %d %d %d", passado[tamanho].NomeP, &passado[tamanho].TempoP1, &passado[tamanho].TempoP2, &passado[tamanho].TempoP3);
-//         tamanho++;
-//     }
-//     fclose(arquivo);
-    
-//     char jogNome[20];
-//     char histNome[20];
-//     strcpy(jogNome, jogador.Nome);
-
-//     // Verifica se tem outro nome igual
-//     for(int i = 0; i < tamanho; i++)
-//     {   
-//         strcpy(histNome, passado[i].NomeP);
-        
-//         for(int j = 0; j < strlen(jogador.Nome); j++)
-//         {
-//             if (histNome[j] == jogNome[j])
-//             {   
-//                 igual++;
-//             } 
-//             if (igual >= strlen(jogNome))
-//             {
-//                 jaTem = 1;
-//                 if(passado[i].TempoP1 != novotempo1)
-//                 {
-//                     passado[i].TempoP1 = novotempo1;
-//                 }
-//                 if(passado[i].TempoP2 != novotempo2)
-//                 {
-//                     passado[i].TempoP2 = novotempo2;
-//                 }
-//                 if(passado[i].TempoP3 != novotempo3)
-//                 {   
-//                     printf("aaaa");
-//                     passado[i].TempoP3 = novotempo3;
-//                 }
-                
-//                 arquivo = fopen("Ranking.txt", "w");
-//                 for(int i = 0; i < tamanho; i++)
-//                 {
-//                     fprintf(arquivo, "%s %d %d %d\n", passado[i].NomeP, passado[i].TempoP1, passado[i].TempoP2, passado[i].TempoP3);
-//                 }
-//             } 
-//         }
-//         igual = 0;
-//     }
-    
-//     arquivo = fopen("Ranking.txt", "a");
-//     if(jaTem == 0)
-//     {
-//         printf("Adicionado com sucesso.");
-//         fprintf(arquivo, "%s %d %d %d\n", jogador.Nome, jogador.Tempo1, jogador.Tempo2, jogador.Tempo3);
-//     }
-//     else
-//     {
-//         printf("Ja possui um jogador com esse nome.");
-//     }
-//     fclose(arquivo);
-    
-// }
-
-
-
-// int main()
-// {   
-//     char nomeJogador[20] = "JESSICA";
-//     adicionarJogador(nomeJogador, 50, 50, 50);
-// }
-
-
-//############################################
-
-
-// #include <stdio.h>
-// #include <stdlib.h>
-// #include <stdlib.h>
-// #include <string.h>
-
-// typedef struct
-// {
-//     char Nome[50];
-//     int Tempo1;
-//     int Tempo2;
-//     int Tempo3;
-
-// } Jogador;
-
-// typedef struct
-// {
-//     char NomeP[50];
-//     int TempoP1;
-//     int TempoP2;
-//     int TempoP3;
-
-// } Score;
-
-// void adicionarJogador(char *inputNome, int novotempo1, int novotempo2, int novotempo3)
-// {
-//     Score passado[50];
-//     Jogador jogador;
-//     FILE *arquivo;
-
-//     char linha[100];
-//     int igual = 0, jaTem = 0;
-//     long posicaoInicial;
-//     char nome[20];
-
-//     arquivo = fopen("Ranking.txt", "r"); 
-
-    
-//     strcpy(jogador.Nome, inputNome);
-    
-//     jogador.Tempo1 = novotempo1;
-//     jogador.Tempo2 = novotempo2;
-//     jogador.Tempo3 = novotempo3;
-    
-//     int tamanho = 0;
-    
-//     //Pega todas da informações do arquivo e e armazena na struck Score de com o tamanho da variavel "tamanho"
-//     while(fgets(linha,sizeof(linha),arquivo) != NULL)
-//     {
-//         sscanf(linha, "%s %d %d %d", passado[tamanho].NomeP, &passado[tamanho].TempoP1, &passado[tamanho].TempoP2, &passado[tamanho].TempoP3);
-//         tamanho++;
-//     }
-//     fclose(arquivo);
-    
-//     char jogNome[20];
-//     char histNome[20];
-//     strcpy(jogNome, jogador.Nome);
-
-//     // Verifica se tem outro nome igual
-//     for(int i = 0; i < tamanho; i++)
-//     {   
-//         strcpy(histNome, passado[i].NomeP);
-        
-//         for(int j = 0; j < strlen(jogador.Nome); j++)
-//         {
-//             if (histNome[j] == jogNome[j])
-//             {   
-//                 igual++;
-//             } 
-//             if (igual >= strlen(jogNome))
-//             {
-//                 jaTem = 1;
-                
-//             } 
-//         }
-//         igual = 0;
-//     }
-    
-//     arquivo = fopen("Ranking.txt", "a");
-//     if(jaTem == 0)
-//     {
-//         printf("Adicionado com sucesso.");
-//         fprintf(arquivo, "%s %d %d %d\n", jogador.Nome, jogador.Tempo1, jogador.Tempo2, jogador.Tempo3);
-//     }
-//     else
-//     {
-//         printf("Ja possui um jogador com esse nome.");
-//     }
-//     fclose(arquivo);
-    
-// }
-
-
-
-// int main()
-// {   
-//     char nomeJogador[20] = "PAULO";
-//     adicionarJogador(nomeJogador, 50, 30, 30);
-// }
+}
