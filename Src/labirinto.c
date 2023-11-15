@@ -125,7 +125,7 @@ int main(void)
                 {
                     system("cls");
                     printf("\nOperacao invalida, tente novamente!!");
-                    break;
+                    return 1;
                 }
             case 2:
                 printf("rankng!");
@@ -135,11 +135,13 @@ int main(void)
                 break;
             }
         }
+    
         else
         {
             system("cls");
             printf("\nOperacao invalida, tente novamente!!");
-            break;
+            return 1;
         }
     }
+    return 0;
 }
