@@ -43,9 +43,9 @@ void menuDificuldades()
     printf("\n\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",c,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,d);
 }
 
-int verificarOpcao(int op, int array[10], int tamanho)
+int verificarOpcao(char op, char array[3])
 {
-    for (int i = 0; i < tamanho; i++)
+    for (int i = 0; i < 3; i++)
         {
             if (op == array[i])
             {
@@ -56,100 +56,90 @@ int verificarOpcao(int op, int array[10], int tamanho)
 
 int main(void)
 {
-    int op = 10;
-    int escolha = 10;
+    char op = "100";
+    char escolha = "10";
     Personagem bolinha;
-    int array1[10] = {0,1,2,3,4,5,6,7,8,9};
-    int array2[3] = {1,2,3};
+    char array1[3] = {'0','1','2'};
+    char array2[3] = {'1','2','3'};
     int verdade = 0;
-    int tamanho = 10;
 
-    while (op != 0)
+    while (op != '0')
     {
         system("cls");
         menu();
         printf("\n\tQual sua escolha: ");
-        scanf("%d", &op);
+        scanf(" %c", &op);
         
-        verdade = verificarOpcao(op, array1, tamanho);
+        verdade = verificarOpcao(op, array1);
         if (verdade == 1)
         {
             verdade = 0;
-            tamanho = 3;
             switch (op)
             {
-                case 1:
-                system("cls");
-                menuDificuldades();
-                printf("\n\tQual sua escolha: ");
-                scanf("%d", &escolha);
-                
-                verdade = verificarOpcao(escolha, array2, tamanho); 
-
-                if (verdade == 1)
+                case '1':              
+                while (1)
                 {
                     system("cls");
-                    switch (escolha)
+                    menuDificuldades();
+                    printf("\n\tQual sua escolha: ");
+                    scanf(" %c", &escolha);
+                    
+                    verdade = verificarOpcao(escolha, array2); 
+
+                    if (verdade == 1)
                     {
-                        case 1:
-                            bolinha.x = 13;
-                            bolinha.y = 0;
+                        verdade = 0;
+                        system("cls");
+                        switch (escolha)
+                        {
+                            case '1':
+                                bolinha.x = 13;
+                                bolinha.y = 0;
 
-                            LINHA =17;
-                            COLUNA=17;
+                                LINHA =17;
+                                COLUNA=17;
 
-                            jogo(matriz1, bolinha);
+                                jogo(matriz1, bolinha);
 
-                            break;
-                        
-                        case 2:
-                            bolinha.x = 0;
-                            bolinha.y = 1;
+                                break;
+                            
+                            case '2':
+                                bolinha.x = 0;
+                                bolinha.y = 1;
 
-                            LINHA =35;
-                            COLUNA=35;
+                                LINHA =35;
+                                COLUNA=35;
 
-                            jogo(matriz2, bolinha);
-                            break;
-                        case 3:
+                                jogo(matriz2, bolinha);
+                                break;
+                            case '3':
 
-                            bolinha.x = 0;
-                            bolinha.y = 1;
+                                bolinha.x = 0;
+                                bolinha.y = 1;
 
-                            LINHA =50;
-                            COLUNA=50;
+                                LINHA =50;
+                                COLUNA=50;
 
-                            jogo(matriz3, bolinha);
-                            break;
-                        case 4:
-                            break;
-                        // default:
-                        //     printf("\nSaindo!");
-                        //     break;
+                                jogo(matriz3, bolinha);
+                                break;
+                            default:
+                                printf("ALOOOOOOOOOOOOOOOOOOOOOOOOO2");
+                                Sleep(1000);
+                                break;
+                        }
+                        break;
                     }
                 }
-                else
-                {
-                    system("cls");
-                    printf("\n\tOperacao invalida, tente novamente!!");
-                    return 1;
-                }
-            case 2:
+                break;
+            case '2':
                 system("cls");
-                printf("\t\nrankng! Em andamento...");
+                printf("\t\nRanking! Em andamento...");
                 Sleep(3000);
                 break;
             default:
-                printf("saundo");
+                printf("Saindo...");
                 break;
             }
-        }
-    
-        else
-        {
-            system("cls");
-            printf("\nOperacao invalida, tente novamente!!");
-            return 1;
         }
     }
     return 0;
