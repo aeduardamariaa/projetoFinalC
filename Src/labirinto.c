@@ -10,6 +10,81 @@
 int LINHA;
 int COLUNA;
 
+void adicionarJogadorTempo(Jogador jogador, Score passado[],int tamanho)
+{
+    
+    FILE *arquivo;
+
+    int igual = 0, jaTem = 0, tempoalterado = 0;
+    
+    
+    char jogNome[20];
+    char histNome[20];
+    
+    strcpy(jogNome, jogador.Nome);
+
+    // Verifica se tem outro nome igual
+    for(int i = 0; i < tamanho; i++)
+    {   
+        strcpy(histNome, passado[i].NomeP);
+        
+        for(int j = 0; j < strlen(jogador.Nome); j++)
+        {
+            if (histNome[j] == jogNome[j])
+            {   
+                igual++;
+            } 
+            if (igual >= strlen(jogNome) && igual == strlen(histNome))
+            {
+                jaTem = 1;
+                
+                if(passado[i].TempoP1 != jogador.Tempo1)
+                {
+                    passado[i].TempoP1 = jogador.Tempo1;
+                    tempoalterado = 1;
+                }
+                if(passado[i].TempoP2 != jogador.Tempo2)
+                {   
+                    passado[i].TempoP2 = jogador.Tempo2;
+                    tempoalterado = 1;
+                }
+                if(passado[i].TempoP3 != jogador.Tempo3)
+                {   
+                    passado[i].TempoP3 =jogador.Tempo3;
+                    tempoalterado = 1;
+                }
+                
+                arquivo = fopen("Ranking.txt", "w"); 
+
+                for(int k = 0; k < tamanho; k++)
+                {   
+                    fprintf(arquivo, "%s %d %d %d\n", passado[k].NomeP, passado[k].TempoP1, passado[k].TempoP2, passado[k].TempoP3);
+                }
+                fclose(arquivo);
+            } 
+        }
+        igual = 0;
+    }
+    
+    arquivo = fopen("Ranking.txt", "a");
+    if(jaTem == 0)
+    {
+        printf("Adicionado com sucesso.\n");
+        fprintf(arquivo, "%s %d %d %d\n", jogador.Nome, jogador.Tempo1, jogador.Tempo2, jogador.Tempo3);
+    }
+    else if (jaTem == 1 && tempoalterado == 0)
+    {
+        printf("Ja possui um jogador com esse nome.\n");
+    }
+    else
+    {
+        printf("Tempo alterado\n");
+    }
+    fclose(arquivo);
+    
+}
+
+
 void menu()
 {
     int m = 186, n = 205;
@@ -58,7 +133,7 @@ int main(void)
 {
     char buffer[8192];
 
-    setvbuf(stdout, buffer, _IOFBF, sizeof(buffer));
+    // setvbuf(stdout, buffer, _IOFBF, sizeof(buffer));
 
     char op = "100";
     char escolha = "10";
@@ -66,6 +141,29 @@ int main(void)
     char array1[3] = {'0','1','2'};
     char array2[3] = {'1','2','3'};
     int verdade = 0;
+
+    Jogador jogador;
+    FILE *arquivo;
+    int tamanhoArq = 0;
+    Score passado[50];
+    // char nomeJogador[20];
+    jogador.Tempo1 = 0;
+    jogador.Tempo2 = 0;
+    jogador.Tempo3 = 0;
+
+      
+    
+    printf("\n\tNome do Jogador: ");
+    scanf(" %s", &jogador.Nome);
+    
+
+    atualizarScore(passado, &tamanhoArq);
+
+    // for (int i = 0; i < 33; i++) {
+    //     printf("Nome: %s, TempoP1: %d, TempoP2: %d, TempoP3: %d\n", passado[i].NomeP, passado[i].TempoP1, passado[i].TempoP2, passado[i].TempoP3);
+    // }    
+    // Sleep(3000);
+
 
     while (op != '0')
     {
@@ -108,7 +206,9 @@ int main(void)
                                 LINHA =17;
                                 COLUNA=17;
 
-                                jogo(matriz1, bolinha);
+                                // jogo(matriz1, bolinha);
+                                adicionarJogadorTempo(jogador, passado, tamanhoArq);
+                                Sleep(3000);
 
                                 break;
                             
@@ -120,6 +220,8 @@ int main(void)
                                 COLUNA=35;
 
                                 jogo(matriz2, bolinha);
+                                adicionarJogadorTempo(jogador, passado, tamanhoArq);
+                                
                                 break;
                             case '3':
 
@@ -130,6 +232,7 @@ int main(void)
                                 COLUNA=50;
 
                                 jogo(matriz3, bolinha);
+                                adicionarJogadorTempo(jogador, passado, tamanhoArq);
                                 break;
                             default:
                                 printf("ALOOOOOOOOOOOOOOOOOOOOOOOOO2");
@@ -144,8 +247,12 @@ int main(void)
                 break;
             case '2':
                 system("cls");
-                printf("\t\nRanking! Em andamento...");
-                Sleep(3000);
+                printf("%i\n",tamanhoArq);
+                atualizarScore(passado, &tamanhoArq);
+                imprimirTresMaioresTempoP1(passado, tamanhoArq);
+                imprimirTresMaioresTempoP2(passado, tamanhoArq);
+                imprimirTresMaioresTempoP3(passado, tamanhoArq);
+                Sleep(5000);
                 break;
             default:
                 printf("Saindo...");
