@@ -56,6 +56,10 @@ int verificarOpcao(char op, char array[3])
 
 int main(void)
 {
+    char buffer[8192];
+
+    setvbuf(stdout, buffer, _IOFBF, sizeof(buffer));
+
     char op = "100";
     char escolha = "10";
     Personagem bolinha;
@@ -68,6 +72,8 @@ int main(void)
         system("cls");
         menu();
         printf("\n\tQual sua escolha: ");
+        fflush(stdout);
+
         scanf(" %c", &op);
         
         verdade = verificarOpcao(op, array1);
@@ -82,7 +88,10 @@ int main(void)
                     system("cls");
                     menuDificuldades();
                     printf("\n\tQual sua escolha: ");
+                    fflush(stdout);
+
                     scanf(" %c", &escolha);
+
                     
                     verdade = verificarOpcao(escolha, array2); 
 
@@ -130,6 +139,8 @@ int main(void)
                         break;
                     }
                 }
+                fflush(stdout);
+
                 break;
             case '2':
                 system("cls");
@@ -140,6 +151,9 @@ int main(void)
                 printf("Saindo...");
                 break;
             }
+
+            fflush(stdout);
+
         }
     }
     return 0;

@@ -98,6 +98,8 @@ void mostrarLabirinto(int matriz[LINHA][COLUNA], Personagem bolinha)
         }
         printf("\n");
     }
+
+    fflush(stdout);
 }
 
 int verificarParedes(int matriz[LINHA][COLUNA], Personagem bolinha, int input)
@@ -253,6 +255,7 @@ void jogo(int matriz[LINHA][COLUNA], Personagem bolinha){
             {
                 system("cls");
                 ganhou();
+                fflush(stdout);
                 Sleep(3000);
                 break;
             }
@@ -271,15 +274,17 @@ void jogo(int matriz[LINHA][COLUNA], Personagem bolinha){
         {
             system("cls");
             mostrarLabirinto(matriz, bolinha);
-            printf("\nTimer: 0 : %2.f", tempo_restante);
+            printf("\nTimer: 0 : %2.f\n", tempo_restante);
             atualizar_tela = 0;
             inicio = clock();
+            fflush(stdout);
         }
 
         if (tempo_restante < 0)
         {
             system("cls");
             perdeu();
+            fflush(stdout);
             Sleep(3000);
             break;
         }
