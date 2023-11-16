@@ -6,13 +6,21 @@
 #include <time.h>
 #include <windows.h>
 
+#define COLOR_RESET "\e[0m"
+#define BLK "\e[0;30m"
+#define RED "\e[0;31m"
+#define GRN "\e[0;32m"
+#define YEL "\e[0;33m"
+#define BLU "\e[0;34m"
+#define MAG "\e[0;35m"
+#define CYN "\e[0;36m"
 
 void ganhou()
 {
     int fontA = 219, fontB = 176;
 
     printf("\n \n \n \n");
-    printf("\n\t    %c%c      %c%c%c%c    %c%c%c%c%c%c    %c%c    %c%c%c%c \n", fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA);
+    printf(YEL"\n\t    %c%c      %c%c%c%c    %c%c%c%c%c%c    %c%c    %c%c%c%c \n", fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA);
     printf("\t    %c%c%c%c    %c%c%c%c%c%c%c%c  %c%c%c%c%c%c  %c%c%c%c  %c%c%c%c%c%c\n", fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB);
     printf("\t    %c%c%c%c  %c%c%c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c\n", fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB);
     printf("\t      %c%c%c%c%c%c%c%c%c%c  %c%c%c%c  %c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c\n", fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB);
@@ -28,8 +36,35 @@ void ganhou()
     printf("\t    %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c    %c%c%c%c%c%c%c%c%c%c%c%c \n", fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB);
     printf("\t    %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c    %c%c%c%c%c%c  %c%c%c%c  \n", fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontB, fontB, fontB, fontB);
     printf("\t      %c%c  %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c    %c%c%c%c%c%c%c%c%c%c \n", fontA, fontA,  fontA, fontA,  fontA, fontA, fontB, fontB, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA);
-    printf("\t        %c%c  %c%c%c%c    %c%c%c%c  %c%c      %c%c%c%c  %c%c%c%c  \n", fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB,fontB);
+    printf("\t        %c%c  %c%c%c%c    %c%c%c%c  %c%c      %c%c%c%c  %c%c%c%c  \n", fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB,fontB, fontB);
+    printf(COLOR_RESET"\n");
 }
+
+void perdeu()
+{
+    int fontA = 219, fontB = 176;
+
+    printf("\n \n \n \n");
+    printf(RED"\n\t\t    %c%c      %c%c%c%c    %c%c%c%c%c%c    %c%c    %c%c%c%c \n", fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA);
+    printf("\t\t    %c%c%c%c    %c%c%c%c%c%c%c%c  %c%c%c%c%c%c  %c%c%c%c  %c%c%c%c%c%c\n", fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB);
+    printf("\t\t    %c%c%c%c  %c%c%c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c\n", fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB);
+    printf("\t\t      %c%c%c%c%c%c%c%c%c%c  %c%c%c%c  %c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c\n", fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB);
+    printf("\t\t        %c%c%c%c%c%c%c%c  %c%c%c%c  %c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c\n", fontA, fontA, fontA, fontA, fontB, fontB, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB);
+    printf("\t\t        %c%c%c%c%c%c    %c%c%c%c  %c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c\n", fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB);
+    printf("\t\t        %c%c%c%c%c%c      %c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c%c%c%c%c\n", fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontA, fontA, fontB, fontB, fontB, fontB, fontA, fontA, fontA, fontA, fontA, fontA, fontB, fontB, fontB, fontB);
+    printf("\t\t          %c%c%c%c        %c%c%c%c%c%c      %c%c%c%c%c%c\n", fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB);
+
+    printf("\n\t    %c%c%c%c          %c%c%c%c%c%c%c%c      %c%c%c%c%c%c%c%c    %c%c%c%c%c%c%c%c%c%c  %c%c%c%c                        \n", fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA);
+    printf("\t    %c%c%c%c%c%c      %c%c%c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c          \n", fontA, fontA, fontA, fontA, fontB, fontB,  fontA, fontA, fontA, fontA, fontB, fontB, fontB, fontB, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontB, fontB, fontB, fontB, fontB, fontB, fontA, fontA, fontA, fontA, fontA, fontA, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB);
+    printf("\t    %c%c%c%c%c%c      %c%c%c%c%c%c  %c%c%c%c%c%c%c%c%c%c%c%c      %c%c%c%c%c%c%c%c      %c%c%c%c%c%c        \n", fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB);
+    printf("\t    %c%c%c%c%c%c      %c%c%c%c%c%c  %c%c%c%c%c%c  %c%c%c%c%c%c%c%c    %c%c%c%c%c%c%c%c    %c%c%c%c%c%c      \n", fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontB, fontB);
+    printf("\t    %c%c%c%c%c%c      %c%c%c%c%c%c  %c%c%c%c%c%c    %c%c%c%c%c%c%c%c  %c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c      \n", fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontB, fontB, fontB, fontB, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontB, fontB, fontB, fontB, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB);
+    printf("\t    %c%c%c%c%c%c      %c%c%c%c%c%c  %c%c%c%c%c%c%c%c      %c%c%c%c%c%c%c%c%c%c%c%c        %c%c%c%c        \n", fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontA, fontA, fontB, fontB, fontA, fontA, fontA, fontA, fontB, fontB, fontB, fontB, fontB, fontB);
+    printf("\t    %c%c%c%c%c%c%c%c%c%c    %c%c%c%c%c%c%c%c%c%c%c%c  %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c  %c%c%c%c                \n", fontA, fontA,  fontA, fontA,  fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontB, fontB, fontB, fontB, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontB, fontB, fontB, fontB, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA, fontA);
+    printf("\t      %c%c%c%c%c%c%c%c%c%c    %c%c%c%c%c%c%c%c      %c%c%c%c%c%c%c%c    %c%c%c%c%c%c%c%c%c%c  %c%c%c%c                      \n", fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB, fontB);
+    printf(COLOR_RESET"\n");
+}
+
 
 void mostrarLabirinto(int matriz[LINHA][COLUNA], Personagem bolinha)
 {
@@ -42,11 +77,11 @@ void mostrarLabirinto(int matriz[LINHA][COLUNA], Personagem bolinha)
         {
             if (j == bolinha.y && i == bolinha.x)
             {
-                printf("**");
+                printf(CYN"**");
             }
             else if (matriz[i][j] == 1)
             {
-                printf("%c%c", lab, lab);
+                printf(COLOR_RESET"%c%c", lab, lab);
             }
             else if (matriz[i][j] == 0)
             {
@@ -58,7 +93,7 @@ void mostrarLabirinto(int matriz[LINHA][COLUNA], Personagem bolinha)
             }
             else if (matriz[i][j] == 3)
             {
-                printf("%c%c", quadrado, quadrado);
+                printf(CYN"%c%c", quadrado, quadrado);
             }
         }
         printf("\n");
@@ -243,7 +278,9 @@ void jogo(int matriz[LINHA][COLUNA], Personagem bolinha){
 
         if (tempo_restante < 0)
         {
-            printf("\nVoce perdeu :\\");
+            system("cls");
+            perdeu();
+            Sleep(3000);
             break;
         }
     }

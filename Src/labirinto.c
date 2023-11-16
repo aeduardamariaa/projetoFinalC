@@ -7,7 +7,7 @@
 #include "../Headers/tabuleiro.h"
 
 
-int LINHA; 
+int LINHA;
 int COLUNA;
 
 void menu()
@@ -16,11 +16,18 @@ void menu()
     int a = 201 , b = 187, c = 200, d = 188;
     printf("\n\t%c%c%c%c%c%c%c%c M E N U %c%c%c%c%c%c%c%c",a,n,n,n,n,n,n,n,n,n,n,n,n,n,n,b);
     printf("\n\t%c\t\t\t%c",m,m);
-    printf("\n\t%c\t1 - Jogar\t%c",m,m);
-    printf("\n\t%c\t2 - Ranking\t%c",m,m);
-    printf("\n\t%C\t0 - SAIR\t%c",m,m);
+    printf("\n\t%c\t");
+    printf(COLOR_RESET"1 - Jogar\t",m);
+    printf("%c",m);
+    printf("\n\t%c\t",m);
+    printf(COLOR_RESET"2 - Ranking\t");
+    printf("%c",m);
+    printf("\n\t%c\t",m);
+    printf(COLOR_RESET"0 - SAIR\t");
+    printf("%c",m);
     printf("\n\t%c\t\t\t%c",m,m);
     printf("\n\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",c,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,d);
+    printf(COLOR_RESET"");
 }
 void menuDificuldades()
 {   
@@ -124,11 +131,13 @@ int main(void)
                 else
                 {
                     system("cls");
-                    printf("\nOperacao invalida, tente novamente!!");
+                    printf("\n\tOperacao invalida, tente novamente!!");
                     return 1;
                 }
             case 2:
-                printf("rankng!");
+                system("cls");
+                printf("\t\nrankng! Em andamento...");
+                Sleep(3000);
                 break;
             default:
                 printf("saundo");
