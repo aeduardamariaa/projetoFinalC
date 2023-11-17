@@ -133,8 +133,6 @@ int main(void)
 {
     char buffer[8192];
 
-    // setvbuf(stdout, buffer, _IOFBF, sizeof(buffer));
-
     char op = "100";
     char escolha = "10";
     Personagem bolinha;
@@ -146,7 +144,6 @@ int main(void)
     FILE *arquivo;
     int tamanhoArq = 0;
     Score passado[50];
-    // char nomeJogador[20];
     jogador.Tempo1 = 0;
     jogador.Tempo2 = 0;
     jogador.Tempo3 = 0;
@@ -158,12 +155,6 @@ int main(void)
     
 
     atualizarScore(passado, &tamanhoArq);
-
-    // for (int i = 0; i < 33; i++) {
-    //     printf("Nome: %s, TempoP1: %d, TempoP2: %d, TempoP3: %d\n", passado[i].NomeP, passado[i].TempoP1, passado[i].TempoP2, passado[i].TempoP3);
-    // }    
-    // Sleep(3000);
-
 
     while (op != '0')
     {
@@ -206,7 +197,7 @@ int main(void)
                                 LINHA =17;
                                 COLUNA=17;
 
-                                // jogo(matriz1, bolinha);
+                                jogo(matriz1, bolinha, &jogador);
                                 adicionarJogadorTempo(jogador, passado, tamanhoArq);
                                 Sleep(3000);
 
@@ -219,7 +210,7 @@ int main(void)
                                 LINHA =35;
                                 COLUNA=35;
 
-                                jogo(matriz2, bolinha);
+                                jogo(matriz2, bolinha, &jogador);
                                 adicionarJogadorTempo(jogador, passado, tamanhoArq);
                                 
                                 break;
@@ -231,7 +222,7 @@ int main(void)
                                 LINHA =50;
                                 COLUNA=50;
 
-                                jogo(matriz3, bolinha);
+                                jogo(matriz3, bolinha, &jogador);
                                 adicionarJogadorTempo(jogador, passado, tamanhoArq);
                                 break;
                             default:

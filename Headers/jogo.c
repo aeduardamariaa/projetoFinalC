@@ -227,7 +227,7 @@ int defTempo(int matriz[LINHA][COLUNA])
 
     return tempo;
 }
-void jogo(int matriz[LINHA][COLUNA], Personagem bolinha)
+void jogo(int matriz[LINHA][COLUNA], Personagem bolinha, Jogador *jogador)
 {
     int input;
     struct tm tempo_inicial, tempo_atual;
@@ -249,8 +249,20 @@ void jogo(int matriz[LINHA][COLUNA], Personagem bolinha)
             {
                 system("cls");
                 ganhou();
-                fflush(stdout);
+            
                 Sleep(3000);
+                if (tempo == 15)
+                {
+                    jogador->Tempo1 = tempo - tempo_restante;
+                }
+                if (tempo == 40)
+                {
+                    jogador->Tempo2 = tempo - tempo_restante;
+                }
+                if (tempo == 50)
+                {
+                    jogador->Tempo2 = tempo - tempo_restante;
+                }
                 break;
             }
             else
@@ -302,101 +314,14 @@ void atualizarScore(Score passado[], int *tamanho)
     fclose(arquivo);
 }
 
-// void adicionarJogadorTempo(Jogador jogador, Score passado[],int tamanho)
-// {
-//     Jogador jogador;
-//     FILE *arquivo;
-
-//     int igual = 0, jaTem = 0, tempoalterado = 0;
-    
-//     char jogNome[20];
-//     char histNome[20];
-    
-//     strcpy(jogNome, jogador.Nome);
-
-//     // Verifica se tem outro nome igual
-//     for(int i = 0; i < tamanho; i++)
-//     {   
-//         strcpy(histNome, passado[i].NomeP);
-        
-//         for(int j = 0; j < strlen(jogador.Nome); j++)
-//         {
-//             if (histNome[j] == jogNome[j])
-//             {   
-//                 igual++;
-//             } 
-//             if (igual >= strlen(jogNome) && igual == strlen(histNome))
-//             {
-//                 jaTem = 1;
-                
-//                 if(passado[i].TempoP1 != jogador.Tempo1)
-//                 {
-//                     // alterarTempo(&passado, jogador, i, 1);
-//                     tempoalterado = 1;
-//                 }
-//                 if(passado[i].TempoP2 != jogador.Tempo2)
-//                 {   
-//                     // alterarTempo(&passado, jogador, i, 2);
-//                     tempoalterado = 1;
-//                 }
-//                 if(passado[i].TempoP3 != jogador.Tempo3)
-//                 {   
-//                     // alterarTempo(&passado, jogador, i, 3);
-//                     tempoalterado = 1;
-//                 }
-                
-//                 arquivo = fopen("Ranking.txt", "w"); 
-
-//                 for(int k = 0; k < tamanho; k++)
-//                 {   
-//                     fprintf(arquivo, "%s %d %d %d\n", passado[k].NomeP, passado[k].TempoP1, passado[k].TempoP2, passado[k].TempoP3);
-//                 }
-//                 fclose(arquivo);
-//             } 
-//         }
-//         igual = 0;
-//     }
-    
-//     arquivo = fopen("Ranking.txt", "a");
-//     if(jaTem == 0)
-//     {
-//         printf("Adicionado com sucesso.\n");
-//         fprintf(arquivo, "%s %d %d %d\n", jogador.Nome, jogador.Tempo1, jogador.Tempo2, jogador.Tempo3);
-//     }
-//     else if (jaTem == 1 && tempoalterado == 0)
-//     {
-//         printf("Ja possui um jogador com esse nome.\n");
-//     }
-//     else
-//     {
-//         printf("Tempo alterado\n");
-//     }
-//     fclose(arquivo);
-    
-// }
-
-// void alterarTempo(Score *passado[], Jogador jogador, int i ,int tempo)
-// {   
-//     if (tempo == 1){
-//        passado[i]->TempoP1 = jogador.Tempo1; 
-//     }
-//     else if (tempo == 2){
-//         passado[i]->TempoP2 = jogador.Tempo2; 
-//     }
-//     else if (tempo ==3){
-//         passado[i]->TempoP3 = jogador.Tempo3; 
-//     }  
-        
-// }
-
 void imprimirTresMaioresTempoP1(Score passado[], int tamanho)
 {
-    int tresMaiores[3] = {0};
+    int tresMaiores[3] = {50, 50, 50};
     char nomes[3][50];
 
     for (int i = 0; i < tamanho; i++)
     {
-        if (passado[i].TempoP1 > tresMaiores[0])
+        if (passado[i].TempoP1 < tresMaiores[0])
         {
             strcpy(nomes[2], nomes[1]);
             strcpy(nomes[1], nomes[0]);
@@ -405,31 +330,31 @@ void imprimirTresMaioresTempoP1(Score passado[], int tamanho)
             tresMaiores[1] = tresMaiores[0];
             tresMaiores[0] = passado[i].TempoP1;
         }
-        else if (passado[i].TempoP1 > tresMaiores[1])
+        else if (passado[i].TempoP1 < tresMaiores[1])
         {
             strcpy(nomes[2], nomes[1]);
             strcpy(nomes[1], passado[i].NomeP);
             tresMaiores[2] = tresMaiores[1];
             tresMaiores[1] = passado[i].TempoP1;
         }
-        else if (passado[i].TempoP1 > tresMaiores[2])
+        else if (passado[i].TempoP1 < tresMaiores[2])
         {
             strcpy(nomes[2], passado[i].NomeP);
             tresMaiores[2] = passado[i].TempoP1;
         }
     }
 
-    printf("Os três maiores valores de TempoP1 são: %d (%s), %d (%s), %d (%s)\n", tresMaiores[0], nomes[0], tresMaiores[1], nomes[1], tresMaiores[2], nomes[2]);
+    printf("\nOs tres menores valores de TempoP1 sao: \n(%s) %d \n(%s) %d \n(%s) %d \n", nomes[0], tresMaiores[0], nomes[1], tresMaiores[1], nomes[2], tresMaiores[2]);
 }
 
 void imprimirTresMaioresTempoP2(Score passado[], int tamanho)
 {
-    int tresMaiores[3] = {0};
+    int tresMaiores[3] = {50};
     char nomes[3][50];
 
     for (int i = 0; i < tamanho; i++)
     {
-        if (passado[i].TempoP2 > tresMaiores[0])
+        if (passado[i].TempoP2 < tresMaiores[0])
         {
             strcpy(nomes[2], nomes[1]);
             strcpy(nomes[1], nomes[0]);
@@ -438,31 +363,31 @@ void imprimirTresMaioresTempoP2(Score passado[], int tamanho)
             tresMaiores[1] = tresMaiores[0];
             tresMaiores[0] = passado[i].TempoP2;
         }
-        else if (passado[i].TempoP2 > tresMaiores[1])
+        else if (passado[i].TempoP2 < tresMaiores[1])
         {
             strcpy(nomes[2], nomes[1]);
             strcpy(nomes[1], passado[i].NomeP);
             tresMaiores[2] = tresMaiores[1];
             tresMaiores[1] = passado[i].TempoP2;
         }
-        else if (passado[i].TempoP2 > tresMaiores[2])
+        else if (passado[i].TempoP2 < tresMaiores[2])
         {
             strcpy(nomes[2], passado[i].NomeP);
             tresMaiores[2] = passado[i].TempoP2;
         }
     }
 
-    printf("Os três maiores valores de TempoP2 são: %d (%s), %d (%s), %d (%s)\n", tresMaiores[0], nomes[0], tresMaiores[1], nomes[1], tresMaiores[2], nomes[2]);
+    printf("Os tres menores valores de TempoP2 sao: \n(%s) %d \n(%s) %d \n(%s) %d \n", nomes[0], tresMaiores[0], nomes[1], tresMaiores[1], nomes[2], tresMaiores[2]); 
 }
 
 void imprimirTresMaioresTempoP3(Score passado[], int tamanho)
 {
-    int tresMaiores[3] = {0};
+    int tresMaiores[3] = {50};
     char nomes[3][50];
 
     for (int i = 0; i < tamanho; i++)
     {
-        if (passado[i].TempoP3 > tresMaiores[0])
+        if (passado[i].TempoP3 < tresMaiores[0])
         {
             strcpy(nomes[2], nomes[1]);
             strcpy(nomes[1], nomes[0]);
@@ -471,19 +396,19 @@ void imprimirTresMaioresTempoP3(Score passado[], int tamanho)
             tresMaiores[1] = tresMaiores[0];
             tresMaiores[0] = passado[i].TempoP3;
         }
-        else if (passado[i].TempoP3 > tresMaiores[1])
+        else if (passado[i].TempoP3 < tresMaiores[1])
         {
             strcpy(nomes[2], nomes[1]);
             strcpy(nomes[1], passado[i].NomeP);
             tresMaiores[2] = tresMaiores[1];
             tresMaiores[1] = passado[i].TempoP3;
         }
-        else if (passado[i].TempoP3 > tresMaiores[2])
+        else if (passado[i].TempoP3 < tresMaiores[2])
         {
             strcpy(nomes[2], passado[i].NomeP);
             tresMaiores[2] = passado[i].TempoP3;
         }
     }
 
-    printf("Os três maiores valores de TempoP3 são: %d (%s), %d (%s), %d (%s)\n", tresMaiores[0], nomes[0], tresMaiores[1], nomes[1], tresMaiores[2], nomes[2]);
+    printf("Os tres menores valores de TempoP3 sao: \n(%s) %d \n(%s) %d \n(%s) %d \n", nomes[0], tresMaiores[0], nomes[1], tresMaiores[1], nomes[2], tresMaiores[2]);
 }

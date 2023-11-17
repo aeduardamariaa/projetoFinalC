@@ -15,6 +15,7 @@ typedef struct
     int Tempo3;
 } Jogador;
 
+
 typedef struct
 {
     char NomeP[50];
@@ -33,7 +34,7 @@ int ganhar(int matriz[LINHA][COLUNA], Personagem bolinha);
 void andar(int matriz[LINHA][COLUNA], Personagem *bolinha, int input);
 struct tm tempoAtual();
 float seconds(struct tm *data_hora_atual);
-void jogo(int matriz[LINHA][COLUNA], Personagem bolinha);
+void jogo(int matriz[LINHA][COLUNA], Personagem bolinha, Jogador *jogador);
 // void jogo(int matriz[LINHA][COLUNA], Personagem bolinha, Score passado[], int tamanho, Jogador jogador);
 void atualizarScore(Score passado[], int *tamanho);
 void adicionarJogadorTempo(Jogador jogador, Score passado[],int tamanho);
