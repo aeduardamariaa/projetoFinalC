@@ -15,6 +15,8 @@
 #define MAG "\e[0;35m"
 #define CYN "\e[0;36m"
 
+
+
 void ganhou()
 {
     int fontA = 219, fontB = 176;
@@ -250,7 +252,7 @@ void jogo(int matriz[LINHA][COLUNA], Personagem bolinha, Jogador *jogador)
                 system("cls");
                 ganhou();
             
-                Sleep(3000);
+                
                 if (tempo == 15)
                 {
                     jogador->Tempo1 = tempo - tempo_restante;
@@ -291,7 +293,7 @@ void jogo(int matriz[LINHA][COLUNA], Personagem bolinha, Jogador *jogador)
             system("cls");
             perdeu();
             fflush(stdout);
-            Sleep(3000);
+            
             break;
         }
     }
@@ -316,41 +318,59 @@ void atualizarScore(Score passado[], int *tamanho)
 
 void imprimirTresMaioresTempoP1(Score passado[], int tamanho)
 {
-    int tresMaiores[3] = {50, 50, 50};
-    char nomes[3][50] = {""};
+    int tresMenores[3] = {15,15,15};
+    char nomes[3][20] = {"-----", "-----", "-----"};
 
     for (int i = 0; i < tamanho; i++)
     {
-        if (passado[i].TempoP1 < tresMaiores[0])
+        if (passado[i].TempoP1 < tresMenores[0])
         {
             strcpy(nomes[2], nomes[1]);
             strcpy(nomes[1], nomes[0]);
             strcpy(nomes[0], passado[i].NomeP);
-            tresMaiores[2] = tresMaiores[1];
-            tresMaiores[1] = tresMaiores[0];
-            tresMaiores[0] = passado[i].TempoP1;
+            tresMenores[2] = tresMenores[1];
+            tresMenores[1] = tresMenores[0];
+            tresMenores[0] = passado[i].TempoP1;
         }
-        else if (passado[i].TempoP1 < tresMaiores[1])
+        else if (passado[i].TempoP1 < tresMenores[1])
         {
             strcpy(nomes[2], nomes[1]);
             strcpy(nomes[1], passado[i].NomeP);
-            tresMaiores[2] = tresMaiores[1];
-            tresMaiores[1] = passado[i].TempoP1;
+            tresMenores[2] = tresMenores[1];
+            tresMenores[1] = passado[i].TempoP1;
         }
-        else if (passado[i].TempoP1 < tresMaiores[2])
+        else if (passado[i].TempoP1 < tresMenores[2])
         {
             strcpy(nomes[2], passado[i].NomeP);
-            tresMaiores[2] = passado[i].TempoP1;
+            tresMenores[2] = passado[i].TempoP1;
         }
     }
+    
+    
+    int m = 186, n = 205;
+    int a = 201 , b = 187, c = 200, d = 188;
 
-    printf("\nOs tres menores valores de TempoP1 sao: \n(%s) %d \n(%s) %d \n(%s) %d \n", nomes[0], tresMaiores[0], nomes[1], tresMaiores[1], nomes[2], tresMaiores[2]);
+    printf(CYN"\n\t%c%c%c%c%c%c%c%c%c%c FACIL %c%c%c%c%c%c%c%c%c%c",n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n);
+    printf("\n\t\t\t\t");
+    printf("\n\t\t");
+    printf(COLOR_RESET"%s  %d sec.\t", nomes[0], tresMenores[0]);
+    printf(CYN"");
+    printf("\n\t\t");
+    printf(COLOR_RESET"%s  %d sec.\t", nomes[1], tresMenores[1]);
+    printf(CYN"");
+    printf("\n\t\t");
+    printf(COLOR_RESET"%s  %d sec.\t", nomes[2], tresMenores[2]);
+    printf(CYN"");
+    printf("\n\t\t\t\t");
+    
+
+//     printf("\nOs tres menores valores de TempoP1 sao: \n(%s) %d \n(%s) %d \n(%s) %d \n", nomes[0], tresMenores[0], nomes[1], tresMenores[1], nomes[2], tresMenores[2]);
 }
 
 void imprimirTresMaioresTempoP2(Score passado[], int tamanho)
 {
-    int tresMaiores[3] = {50};
-    char nomes[3][50];
+    int tresMaiores[3] = {40,40,40};
+    char nomes[3][50] = {"-----","-----","-----"};
 
     for (int i = 0; i < tamanho; i++)
     {
@@ -377,13 +397,26 @@ void imprimirTresMaioresTempoP2(Score passado[], int tamanho)
         }
     }
 
-    printf("Os tres menores valores de TempoP2 sao: \n(%s) %d \n(%s) %d \n(%s) %d \n", nomes[0], tresMaiores[0], nomes[1], tresMaiores[1], nomes[2], tresMaiores[2]); 
+    int m = 186, n = 205;
+    int a = 201 , b = 187, c = 200, d = 188;
+    printf(CYN"\n\t%c%c%c%c%c%c%c%c%c%c MEDIO %c%c%c%c%c%c%c%c%c%c",n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n);
+    printf("\n\t\t\t\t");
+    printf("\n\t\t");
+    printf(COLOR_RESET"%s  %d sec.\t", nomes[0], tresMaiores[0]);
+    printf(CYN"");
+    printf("\n\t\t");
+    printf(COLOR_RESET"%s  %d sec.\t", nomes[1], tresMaiores[1]);
+    printf(CYN"");
+    printf("\n\t\t");
+    printf(COLOR_RESET"%s  %d sec.\t", nomes[2], tresMaiores[2]);
+    printf(CYN"");
+    printf("\n\t\t\t\t");
 }
 
 void imprimirTresMaioresTempoP3(Score passado[], int tamanho)
 {
-    int tresMaiores[3] = {50};
-    char nomes[3][50];
+    int tresMaiores[3] = {50,50,50};
+    char nomes[3][50] = {"-----","-----","-----"};
 
     for (int i = 0; i < tamanho; i++)
     {
@@ -409,6 +442,20 @@ void imprimirTresMaioresTempoP3(Score passado[], int tamanho)
             tresMaiores[2] = passado[i].TempoP3;
         }
     }
-
-    printf("Os tres menores valores de TempoP3 sao: \n(%s) %d \n(%s) %d \n(%s) %d \n", nomes[0], tresMaiores[0], nomes[1], tresMaiores[1], nomes[2], tresMaiores[2]);
+    int m = 186, n = 205;
+    int a = 201 , b = 187, c = 200, d = 188;
+    printf(CYN"\n\t%c%c%c%c%c%c%c%c%c DIFICIL %c%c%c%c%c%c%c%c%c",n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n);
+    printf("\n\t\t\t\t");
+    printf("\n\t\t");
+    printf(COLOR_RESET"%s  %d sec.\t", nomes[0], tresMaiores[0]);
+    printf(CYN"");
+    printf("\n\t\t");
+    printf(COLOR_RESET"%s  %d sec.\t", nomes[1], tresMaiores[1]);
+    printf(CYN"");
+    printf("\n\t\t");
+    printf(COLOR_RESET"%s  %d sec.\t", nomes[2], tresMaiores[2]);
+    printf(CYN"");
+    printf("\n\t\t\t\t");
+    printf("\n\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n);
+    printf(COLOR_RESET"");
 }

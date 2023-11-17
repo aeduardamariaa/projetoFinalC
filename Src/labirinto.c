@@ -38,17 +38,17 @@ void adicionarJogadorTempo(Jogador jogador, Score passado[],int tamanho)
             {
                 jaTem = 1;
                 
-                if(passado[i].TempoP1 != jogador.Tempo1)
+                if(passado[i].TempoP1 > jogador.Tempo1)
                 {
                     passado[i].TempoP1 = jogador.Tempo1;
                     tempoalterado = 1;
                 }
-                if(passado[i].TempoP2 != jogador.Tempo2)
+                if(passado[i].TempoP2 > jogador.Tempo2)
                 {   
                     passado[i].TempoP2 = jogador.Tempo2;
                     tempoalterado = 1;
                 }
-                if(passado[i].TempoP3 != jogador.Tempo3)
+                if(passado[i].TempoP3 > jogador.Tempo3)
                 {   
                     passado[i].TempoP3 =jogador.Tempo3;
                     tempoalterado = 1;
@@ -69,53 +69,71 @@ void adicionarJogadorTempo(Jogador jogador, Score passado[],int tamanho)
     arquivo = fopen("Ranking.txt", "a");
     if(jaTem == 0)
     {
-        printf("Adicionado com sucesso.\n");
+        printf("");
         fprintf(arquivo, "%s %d %d %d\n", jogador.Nome, jogador.Tempo1, jogador.Tempo2, jogador.Tempo3);
     }
     else if (jaTem == 1 && tempoalterado == 0)
     {
-        printf("Ja possui um jogador com esse nome.\n");
+        // printf("Ja possui um jogador com esse nome.\n");
+        printf("");
     }
-    else
+    else if(jaTem == 1 && tempoalterado == 1)
     {
-        printf("Tempo alterado\n");
+        printf(CYN"\n\t\tNovo Record!!!\n");
+        printf(COLOR_RESET"");
     }
     fclose(arquivo);
     
 }
 
 
-void menu()
-{
+void menu(Jogador jogador)
+{   
+    char Nome[20];
+    strcpy(Nome,jogador.Nome);
     int m = 186, n = 205;
     int a = 201 , b = 187, c = 200, d = 188;
-    printf("\n\t%c%c%c%c%c%c%c%c M E N U %c%c%c%c%c%c%c%c",a,n,n,n,n,n,n,n,n,n,n,n,n,n,n,b);
+    printf(COLOR_RESET"\n\n\n\tJogador: ");
+    printf(YEL"%s",Nome);
+    printf(CYN"\n\t%c%c%c%c%c%c%c%c M E N U %c%c%c%c%c%c%c%c",a,n,n,n,n,n,n,n,n,n,n,n,n,n,n,b);
     printf("\n\t%c\t\t\t%c",m,m);
     printf("\n\t%c\t");
     printf(COLOR_RESET"1 - Jogar\t",m);
-    printf("%c",m);
+    printf(CYN"%c",m);
     printf("\n\t%c\t",m);
     printf(COLOR_RESET"2 - Ranking\t");
-    printf("%c",m);
+    printf(CYN"%c",m);
     printf("\n\t%c\t",m);
     printf(COLOR_RESET"0 - SAIR\t");
-    printf("%c",m);
+    printf(CYN"%c",m);
     printf("\n\t%c\t\t\t%c",m,m);
     printf("\n\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",c,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,d);
     printf(COLOR_RESET"");
 }
-void menuDificuldades()
+
+void menuDificuldades(Jogador jogador)
 {   
+    char Nome[20];
+    strcpy(Nome,jogador.Nome);
     int m = 186, n = 205;
     int a = 201 , b = 187, c = 200, d = 188;
     int i = 161, p = 160, e = 130;
-    printf("\n\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",a,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,b);
+    printf(COLOR_RESET"\n\n\n\tJogador: ");
+    printf(YEL"%s",Nome);
+    printf(CYN"\n\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",a,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,b);
     printf("\n\t%c\t\t\t\t%c",m,m);
-    printf("\n\t%c\t1 - N%cvel F%ccil\t\t%c",m,i,p,m);
-    printf("\n\t%c\t2 - N%cvel M%Cdio\t\t%c",m,i,e,m);
-    printf("\n\t%C\t3 - N%cvel Dif%ccil\t%c",m,i,i,m);
+    printf("\n\t%c\t",m);
+    printf(COLOR_RESET"1 - N%cvel F%ccil\t",i,p);
+    printf(CYN"\t%c",m);
+    printf("\n\t%c\t",m);
+    printf(COLOR_RESET"2 - N%cvel M%Cdio\t",i,e);
+    printf(CYN"\t%c",m);
+    printf("\n\t%c\t",m);
+    printf(COLOR_RESET"3 - N%cvel Dif%ccil\t",i,i);
+    printf(CYN"%c",m);
     printf("\n\t%c\t\t\t\t%c",m,m);
     printf("\n\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",c,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,d);
+    printf(COLOR_RESET"");
 }
 
 int verificarOpcao(char op, char array[3])
@@ -144,12 +162,10 @@ int main(void)
     FILE *arquivo;
     int tamanhoArq = 0;
     Score passado[50];
-    jogador.Tempo1 = 0;
-    jogador.Tempo2 = 0;
-    jogador.Tempo3 = 0;
+    jogador.Tempo1 = 15;
+    jogador.Tempo2 = 40;
+    jogador.Tempo3 = 50;
 
-      
-    
     printf("\n\tNome do Jogador: ");
     scanf(" %s", &jogador.Nome);
     
@@ -159,7 +175,7 @@ int main(void)
     while (op != '0')
     {
         system("cls");
-        menu();
+        menu(jogador);
         printf("\n\tQual sua escolha: ");
         fflush(stdout);
 
@@ -175,7 +191,7 @@ int main(void)
                 while (1)
                 {
                     system("cls");
-                    menuDificuldades();
+                    menuDificuldades(jogador);
                     printf("\n\tQual sua escolha: ");
                     fflush(stdout);
 
@@ -193,12 +209,15 @@ int main(void)
                             case '1':
                                 bolinha.x = 13;
                                 bolinha.y = 0;
+                                
+                                
 
                                 LINHA =17;
                                 COLUNA=17;
 
                                 jogo(matriz1, bolinha, &jogador);
                                 adicionarJogadorTempo(jogador, passado, tamanhoArq);
+                                atualizarScore(passado, &tamanhoArq);
                                 Sleep(3000);
 
                                 break;
@@ -212,7 +231,8 @@ int main(void)
 
                                 jogo(matriz2, bolinha, &jogador);
                                 adicionarJogadorTempo(jogador, passado, tamanhoArq);
-                                
+                                atualizarScore(passado, &tamanhoArq);
+                                Sleep(3000);
                                 break;
                             case '3':
 
@@ -224,10 +244,10 @@ int main(void)
 
                                 jogo(matriz3, bolinha, &jogador);
                                 adicionarJogadorTempo(jogador, passado, tamanhoArq);
+                                atualizarScore(passado, &tamanhoArq);
+                                Sleep(3000);
                                 break;
                             default:
-                                printf("ALOOOOOOOOOOOOOOOOOOOOOOOOO2");
-                                Sleep(1000);
                                 break;
                         }
                         break;
@@ -243,10 +263,13 @@ int main(void)
                 imprimirTresMaioresTempoP1(passado, tamanhoArq);
                 imprimirTresMaioresTempoP2(passado, tamanhoArq);
                 imprimirTresMaioresTempoP3(passado, tamanhoArq);
-                Sleep(5000);
+                Sleep(6000);
                 break;
             default:
-                printf("Saindo...");
+                system('cls');
+                printf("\n\tSaindo...");
+                
+                
                 break;
             }
 
