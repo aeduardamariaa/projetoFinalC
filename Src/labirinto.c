@@ -269,9 +269,7 @@ int main(void)
                 Sleep(6000);
                 break;
             default:
-                system('cls');
                 printf("\n\tSaindo...");
-                
                 
                 break;
             }
