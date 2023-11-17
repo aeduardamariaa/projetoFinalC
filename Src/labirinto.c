@@ -231,10 +231,6 @@ int main(void)
                                 adicionarJogadorTempo(jogador, passado, tamanhoArq);
                                 Sleep(3000);
                                 break;
-                            // default:
-                            //     printf("ALOOOOOOOOOOOOOOOOOOOOOOOOO2");
-                            //     Sleep(1000);
-                            //     break;
                         }
                         break;
                     }
