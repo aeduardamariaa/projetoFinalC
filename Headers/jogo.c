@@ -263,7 +263,7 @@ void jogo(int matriz[LINHA][COLUNA], Personagem bolinha, Jogador *jogador)
                 }
                 if (tempo == 50)
                 {
-                    jogador->Tempo2 = tempo - tempo_restante;
+                    jogador->Tempo3 = tempo - tempo_restante;
                 }
                 break;
             }
@@ -353,13 +353,16 @@ void imprimirTresMaioresTempoP1(Score passado[], int tamanho)
     printf(CYN"\n\t%c%c%c%c%c%c%c%c%c%c FACIL %c%c%c%c%c%c%c%c%c%c",n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n);
     printf("\n\t\t\t\t");
     printf("\n\t\t");
-    printf(COLOR_RESET"%s  %d sec.\t", nomes[0], tresMenores[0]);
+    printf(YEL"%s  ", nomes[0]);
+    printf(COLOR_RESET"%d sec.\t", tresMenores[0]);
     printf(CYN"");
     printf("\n\t\t");
-    printf(COLOR_RESET"%s  %d sec.\t", nomes[1], tresMenores[1]);
+    printf(YEL"%s  ", nomes[1]);
+    printf(COLOR_RESET"%d sec.\t", tresMenores[1]);
     printf(CYN"");
     printf("\n\t\t");
-    printf(COLOR_RESET"%s  %d sec.\t", nomes[2], tresMenores[2]);
+    printf(YEL"%s  ", nomes[2]);
+    printf(COLOR_RESET"%d sec.\t", tresMenores[2]);
     printf(CYN"");
     printf("\n\t\t\t\t");
     
@@ -402,13 +405,16 @@ void imprimirTresMaioresTempoP2(Score passado[], int tamanho)
     printf(CYN"\n\t%c%c%c%c%c%c%c%c%c%c MEDIO %c%c%c%c%c%c%c%c%c%c",n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n);
     printf("\n\t\t\t\t");
     printf("\n\t\t");
-    printf(COLOR_RESET"%s  %d sec.\t", nomes[0], tresMaiores[0]);
+    printf(YEL"%s  ", nomes[0]);
+    printf(COLOR_RESET"%d sec.\t", tresMaiores[0]);
     printf(CYN"");
     printf("\n\t\t");
-    printf(COLOR_RESET"%s  %d sec.\t", nomes[1], tresMaiores[1]);
+    printf(YEL"%s  ", nomes[1]);
+    printf(COLOR_RESET"%d sec.\t", tresMaiores[1]);
     printf(CYN"");
     printf("\n\t\t");
-    printf(COLOR_RESET"%s  %d sec.\t", nomes[2], tresMaiores[2]);
+    printf(YEL"%s  ", nomes[2]);
+    printf(COLOR_RESET"%d sec.\t", tresMaiores[2]);
     printf(CYN"");
     printf("\n\t\t\t\t");
 }
@@ -447,13 +453,16 @@ void imprimirTresMaioresTempoP3(Score passado[], int tamanho)
     printf(CYN"\n\t%c%c%c%c%c%c%c%c%c DIFICIL %c%c%c%c%c%c%c%c%c",n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n);
     printf("\n\t\t\t\t");
     printf("\n\t\t");
-    printf(COLOR_RESET"%s  %d sec.\t", nomes[0], tresMaiores[0]);
+    printf(YEL"%s  ", nomes[0]);
+    printf(COLOR_RESET"%d sec.\t", tresMaiores[0]);
     printf(CYN"");
     printf("\n\t\t");
-    printf(COLOR_RESET"%s  %d sec.\t", nomes[1], tresMaiores[1]);
+    printf(YEL"%s  ", nomes[1]);
+    printf(COLOR_RESET"%d sec.\t", tresMaiores[1]);
     printf(CYN"");
     printf("\n\t\t");
-    printf(COLOR_RESET"%s  %d sec.\t", nomes[2], tresMaiores[2]);
+    printf(YEL"%s  ", nomes[2]);
+    printf(COLOR_RESET"%d sec.\t", tresMaiores[2]);
     printf(CYN"");
     printf("\n\t\t\t\t");
     printf("\n\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n);
