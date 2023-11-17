@@ -144,9 +144,9 @@ int main(void)
     FILE *arquivo;
     int tamanhoArq = 0;
     Score passado[50];
-    jogador.Tempo1 = 0;
-    jogador.Tempo2 = 0;
-    jogador.Tempo3 = 0;
+    jogador.Tempo1 = 50;
+    jogador.Tempo2 = 50;
+    jogador.Tempo3 = 50;
 
       
     
@@ -198,6 +198,7 @@ int main(void)
                                 COLUNA=17;
 
                                 jogo(matriz1, bolinha, &jogador);
+                                atualizarScore(passado, &tamanhoArq);
                                 adicionarJogadorTempo(jogador, passado, tamanhoArq);
                                 Sleep(3000);
 
@@ -211,9 +212,12 @@ int main(void)
                                 COLUNA=35;
 
                                 jogo(matriz2, bolinha, &jogador);
+                                atualizarScore(passado, &tamanhoArq);
                                 adicionarJogadorTempo(jogador, passado, tamanhoArq);
+                                Sleep(3000);
                                 
                                 break;
+
                             case '3':
 
                                 bolinha.x = 0;
@@ -223,12 +227,14 @@ int main(void)
                                 COLUNA=50;
 
                                 jogo(matriz3, bolinha, &jogador);
+                                atualizarScore(passado, &tamanhoArq);
                                 adicionarJogadorTempo(jogador, passado, tamanhoArq);
+                                Sleep(3000);
                                 break;
-                            default:
-                                printf("ALOOOOOOOOOOOOOOOOOOOOOOOOO2");
-                                Sleep(1000);
-                                break;
+                            // default:
+                            //     printf("ALOOOOOOOOOOOOOOOOOOOOOOOOO2");
+                            //     Sleep(1000);
+                            //     break;
                         }
                         break;
                     }
@@ -238,7 +244,6 @@ int main(void)
                 break;
             case '2':
                 system("cls");
-                printf("%i\n",tamanhoArq);
                 atualizarScore(passado, &tamanhoArq);
                 imprimirTresMaioresTempoP1(passado, tamanhoArq);
                 imprimirTresMaioresTempoP2(passado, tamanhoArq);
