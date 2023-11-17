@@ -317,7 +317,7 @@ void atualizarScore(Score passado[], int *tamanho)
 void imprimirTresMaioresTempoP1(Score passado[], int tamanho)
 {
     int tresMaiores[3] = {50, 50, 50};
-    char nomes[3][50];
+    char nomes[3][50] = {""};
 
     for (int i = 0; i < tamanho; i++)
     {
