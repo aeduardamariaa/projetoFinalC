@@ -166,6 +166,7 @@ int main(void)
     jogador.Tempo2 = 40;
     jogador.Tempo3 = 50;
 
+    
     printf("\n\tNome do Jogador: ");
     scanf(" %s", &jogador.Nome);
     
@@ -269,7 +270,8 @@ int main(void)
                 Sleep(6000);
                 break;
             default:
-                printf("\n\tSaindo...");
+                printf(YEL"\n\tSaindo...");
+                printf(COLOR_RESET"\t");
                 
                 break;
             }
