@@ -216,6 +216,7 @@ int main(void)
                                 COLUNA=17;
 
                                 jogo(matriz1, bolinha, &jogador);
+                                atualizarScore(passado, &tamanhoArq);
                                 adicionarJogadorTempo(jogador, passado, tamanhoArq);
                                 atualizarScore(passado, &tamanhoArq);
                                 Sleep(3000);
@@ -230,10 +231,12 @@ int main(void)
                                 COLUNA=35;
 
                                 jogo(matriz2, bolinha, &jogador);
+                                atualizarScore(passado, &tamanhoArq);
                                 adicionarJogadorTempo(jogador, passado, tamanhoArq);
                                 atualizarScore(passado, &tamanhoArq);
                                 Sleep(3000);
                                 break;
+
                             case '3':
 
                                 bolinha.x = 0;
@@ -243,6 +246,7 @@ int main(void)
                                 COLUNA=50;
 
                                 jogo(matriz3, bolinha, &jogador);
+                                atualizarScore(passado, &tamanhoArq);
                                 adicionarJogadorTempo(jogador, passado, tamanhoArq);
                                 atualizarScore(passado, &tamanhoArq);
                                 Sleep(3000);
@@ -258,7 +262,6 @@ int main(void)
                 break;
             case '2':
                 system("cls");
-                printf("%i\n",tamanhoArq);
                 atualizarScore(passado, &tamanhoArq);
                 imprimirTresMaioresTempoP1(passado, tamanhoArq);
                 imprimirTresMaioresTempoP2(passado, tamanhoArq);
