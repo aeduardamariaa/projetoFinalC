@@ -1,4 +1,4 @@
-#projetoFinalC
+# projetoFinalC
 Integrantes: Yasmin Trembulack, Jéssica Fedalto, Maria Eduarda da Silva.
 
 Projeto final da matéria de Lógica de programação.
